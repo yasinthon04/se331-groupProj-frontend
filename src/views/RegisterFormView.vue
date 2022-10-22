@@ -105,6 +105,52 @@ export default {
 }
 </script>
 <style scoped>
+.menu {
+  position: fixed;
+  height: 100vh;
+  background: #5ee965;
+  width: 5vw;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
+  transition: 1s;
+}
+.menu:hover {
+  width: 25vw;
+}
+.menu:hover ~ .container {
+  transform: perspective(40vw) rotateY(5deg) translateX(17vw) scaleY(0.6);
+}
+.menu:hover nav {
+  left: 5%;
+}
+body {
+  background: #ffffff;
+  box-sizing: content-box;
+}
+
+nav {
+  position: absolute;
+  margin-top: 80%;
+  left: -1000px;
+  transition: 0.5s;
+}
+nav ul {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  list-style-type: none;
+}
+nav li {
+  line-height: 2em;
+  letter-spacing: 0.3em;
+}
+nav a {
+  font-size: 30px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+nav a:hover {
+  color: rgb(255, 0, 0);
+}
 label {
   display: block;
   margin-top: 10px;

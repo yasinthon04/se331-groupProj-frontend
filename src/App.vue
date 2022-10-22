@@ -3,41 +3,54 @@
     {{ GStore.flashMessage }}
   </div>
   <div id="nav">
-    <nav class="navbar navbar-expand">
-      <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <router-link to="/register" class="nav-link">
-            <font-awesome-icon icon="user-plus" /> Sign Up
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/login" class="nav-link">
-            <font-awesome-icon icon="sign-in-alt" /> Login
-          </router-link>
-        </li>
-      </ul>
-      <ul v-if="GStore.currentUser" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <router-link to="/profile" class="nav-link">
-            <font-awesome-icon icon="user" />
-            {{ GStore.currentUser.name }}
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="logout">
-            <font-awesome-icon icon="sign-out-alt" /> Logout
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="menu">
+      <nav>
+        <ul>
+          <li>
+            <router-link :to="{ name: 'EventList' }">Home</router-link><br />
+          </li>
+          <li>
+            <router-link :to="{ name: 'about' }">About</router-link><br />
+          </li>
+          <span v-if="isAdmin">
+            <li>
+              <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
+            </li>
+          </span>
+        </ul>
+        <div id="nav">
+          <nav class="navbar navbar-expand">
+            <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <router-link to="/register" class="nav-link">
+                  <font-awesome-icon icon="user-plus" /> Sign Up
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/login" class="nav-link">
+                  <font-awesome-icon icon="sign-in-alt" /> Login
+                </router-link>
+              </li>
+            </ul>
+            <ul v-if="GStore.currentUser" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <router-link to="/profile" class="nav-link">
+                  <font-awesome-icon icon="user" />
+                  {{ GStore.currentUser.name }}
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" @click="logout">
+                  <font-awesome-icon icon="sign-out-alt" /> Logout
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
+    </div>
   </div>
-  <nav>
-    <router-link :to="{ name: 'EventList' }">Home</router-link> |
-    <router-link :to="{ name: 'about' }">About</router-link> |
-    <span v-if="isAdmin">
-      <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
-    </span>
-  </nav>
+
   <router-view />
 </template>
 <script>
@@ -82,18 +95,51 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+.menu {
+  position: fixed;
+  height: 100vh;
+  background: #5ee965;
+  width: 5vw;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
+  transition: 1s;
+}
+.menu:hover {
+  width: 25vw;
+}
+.menu:hover ~ .container {
+  transform: perspective(40vw) rotateY(5deg) translateX(17vw) scaleY(0.6);
+}
+.menu:hover nav {
+  left: 5%;
+}
+body {
+  background: #ffffff;
+  box-sizing: content-box;
+}
 
 nav {
-  padding: 30px;
+  position: absolute;
+  margin-top: 80%;
+  left: -1000px;
+  transition: 0.5s;
 }
-
+nav ul {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  list-style-type: none;
+}
+nav li {
+  line-height: 2em;
+  letter-spacing: 0.3em;
+}
 nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  font-size: 30px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+nav a:hover {
+  color: rgb(255, 0, 0);
 }
 h4 {
   font-size: 20px;
