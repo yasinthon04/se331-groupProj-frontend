@@ -147,6 +147,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: auto;
 }
 .pagination {
   display: flex;
@@ -194,12 +195,12 @@ export default {
   padding: 1em;
 }
 .card__buttons .btn:hover {
-  -webkit-animation: gradient 1.3s ease infinite;
-  animation: gradient 1.3s ease infinite;
+  -webkit-animation: gradient 0.3s ease infinite;
+  animation: gradient 0.3s ease infinite;
 }
 .card__buttons .btn:hover i {
-  -webkit-animation: levitate 1.3s ease infinite;
-  animation: levitate 1.3s ease infinite;
+  -webkit-animation: levitate 0.3s ease infinite;
+  animation: levitate 0.3s ease infinite;
 }
 .card__buttons .primary {
   position: relative;

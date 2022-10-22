@@ -99,18 +99,18 @@ export default {
   position: fixed;
   height: 100vh;
   background: #5ee965;
-  width: 5vw;
+  width: 2vw;
   box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
   transition: 1s;
 }
 .menu:hover {
-  width: 25vw;
+  width: 15vw;
 }
 .menu:hover ~ .container {
   transform: perspective(40vw) rotateY(5deg) translateX(17vw) scaleY(0.6);
 }
 .menu:hover nav {
-  left: 5%;
+  left: 0%;
 }
 body {
   background: #ffffff;
@@ -119,7 +119,7 @@ body {
 
 nav {
   position: absolute;
-  margin-top: 80%;
+  margin-top: 120%;
   left: -1000px;
   transition: 0.5s;
 }
@@ -133,7 +133,7 @@ nav li {
   letter-spacing: 0.3em;
 }
 nav a {
-  font-size: 30px;
+  font-size: 22px;
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-weight: 600;

@@ -74,10 +74,11 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Poppins:800');
 .card {
+  margin-left: 50px;
   padding: 13px;
   max-width: 318px;
   width: 100%;
-  background: linear-gradient(-120deg, #33ff55 0%, #53a0fd 60%, #ff7575 100%);
+  background: linear-gradient(-120deg, #33ff55 0%, #53a0fd 60%, #db5151 100%);
   display: flex;
   justify-content: center;
   align-items: center;
