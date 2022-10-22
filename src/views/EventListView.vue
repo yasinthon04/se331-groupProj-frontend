@@ -1,5 +1,5 @@
 <template>
-  <h1>Events For Good</h1>
+  <h1>People' vaccinated</h1>
 
   <div class="events">
     <div class="search-box">
@@ -10,31 +10,36 @@
         @input="updateKeyword"
       />
     </div>
-
-    <EventCard
-      v-for="event in events"
-      :key="event.id"
-      :event="event"
-    ></EventCard>
+    <div class="row">
+      <EventCard
+        v-for="event in events"
+        :key="event.id"
+        :event="event"
+      ></EventCard>
+    </div>
 
     <div class="pagination">
-      <router-link
-        id="page-prev"
-        :to="{ name: 'EventList', query: { page: page - 1 } }"
-        rel="prev"
-        v-if="page != 1"
-      >
-        Prev Page
-      </router-link>
+      <div class="card__buttons">
+        <div class="card__buttons btn primary">
+          <router-link
+            id="page-prev"
+            :to="{ name: 'EventList', query: { page: page - 1 } }"
+            rel="prev"
+            v-if="page != 1"
+          >
+            Prev Page
+          </router-link>
 
-      <router-link
-        id="page-next"
-        :to="{ name: 'EventList', query: { page: page + 1 } }"
-        rel="next"
-        v-if="hasNextPage"
-      >
-        Next Page
-      </router-link>
+          <router-link
+            id="page-next"
+            :to="{ name: 'EventList', query: { page: page + 1 } }"
+            rel="next"
+            v-if="hasNextPage"
+          >
+            Next Page
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -130,6 +135,14 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Poppins:800');
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
 .events {
   display: flex;
   flex-direction: column;
@@ -137,13 +150,15 @@ export default {
 }
 .pagination {
   display: flex;
-  width: 290px;
+  padding-top: 10;
+  width: 150px;
+  margin-right: 100;
 }
 
 .pagination a {
   flex: 1;
   text-decoration: none;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 #page-prev {
@@ -156,5 +171,41 @@ export default {
 
 .search-box {
   width: 300px;
+}
+
+.card__buttons {
+  display: flex;
+  align-items: right;
+  width: 100%;
+  margin: 1.5em 0 0.5em 0;
+  flex-direction: row;
+}
+.card__buttons .btn {
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-weight: regular;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-align: center;
+  display: block;
+  flex: 1 1 100%;
+  color: #fff;
+  padding: 1em;
+}
+.card__buttons .btn:hover {
+  -webkit-animation: gradient 1.3s ease infinite;
+  animation: gradient 1.3s ease infinite;
+}
+.card__buttons .btn:hover i {
+  -webkit-animation: levitate 1.3s ease infinite;
+  animation: levitate 1.3s ease infinite;
+}
+.card__buttons .primary {
+  position: relative;
+  background-image: linear-gradient(to right, #1897e1, #3022ad);
+  background-size: 150% 150%;
+  transition: all 0.4s ease;
+  z-index: 1;
 }
 </style>
