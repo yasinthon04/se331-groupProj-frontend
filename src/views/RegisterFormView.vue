@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-12">
-    <div clas="card card-container">
+    <div class="card card-container">
       <img
         id="profile-img"
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
@@ -29,17 +29,19 @@
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
               ></span>
-              Sign Up
+              <span>Sign Up</span>
             </button>
           </div>
         </div>
       </Form>
-      <div
-        v-if="message"
-        class="alert"
-        :class="successful ? 'alert-success' : 'alert-danger'"
-      >
-        {{ message }}
+      <div class="form-group">
+        <div
+          v-if="message"
+          class="alert"
+          :class="successful ? 'alert-success' : 'alert-danger'"
+        >
+          {{ message }}
+        </div>
       </div>
     </div>
   </div>
@@ -105,7 +107,7 @@ export default {
 }
 </script>
 <style scoped>
-.menu {
+/* .menu {
   position: fixed;
   height: 100vh;
   background: #5ee965;
@@ -150,7 +152,7 @@ nav a {
 }
 nav a:hover {
   color: rgb(255, 0, 0);
-}
+} */
 label {
   display: block;
   margin-top: 10px;
