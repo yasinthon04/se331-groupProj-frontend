@@ -1,47 +1,46 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <Form @submit="handleRegiter" :validation-schema="schema">
-        <div v-if="!successful">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <Field name="username" type="text" class="form-control" />
-            <ErrorMessage name="username" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <Field name="email" type="email" class="form-control" />
-            <ErrorMessage name="email" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <Field name="password" type="password" class="form-control" />
-            <ErrorMessage name="password" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" :disabled="loading">
-              <span
-                v-show="loading"
-                class="spinner-border spinner-border-sm"
-              ></span>
-              <span>Sign Up</span>
-            </button>
-          </div>
+  <h1>Register</h1>
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <Form @submit="handleRegiter" :validation-schema="schema">
+      <div v-if="!successful">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <Field name="username" type="text" class="form-control" />
+          <ErrorMessage name="username" class="error-feedback" />
         </div>
-      </Form>
-      <div class="form-group">
-        <div
-          v-if="message"
-          class="alert"
-          :class="successful ? 'alert-success' : 'alert-danger'"
-        >
-          {{ message }}
+        <div class="form-group">
+          <label for="email">Email</label>
+          <Field name="email" type="email" class="form-control" />
+          <ErrorMessage name="email" class="error-feedback" />
         </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <Field name="password" type="password" class="form-control" />
+          <ErrorMessage name="password" class="error-feedback" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" :disabled="loading">
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span>Sign Up</span>
+          </button>
+        </div>
+      </div>
+    </Form>
+    <div class="form-group">
+      <div
+        v-if="message"
+        class="alert"
+        :class="successful ? 'alert-success' : 'alert-danger'"
+      >
+        {{ message }}
       </div>
     </div>
   </div>
@@ -107,52 +106,6 @@ export default {
 }
 </script>
 <style scoped>
-/* .menu {
-  position: fixed;
-  height: 100vh;
-  background: #5ee965;
-  width: 5vw;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
-  transition: 1s;
-}
-.menu:hover {
-  width: 25vw;
-}
-.menu:hover ~ .container {
-  transform: perspective(40vw) rotateY(5deg) translateX(17vw) scaleY(0.6);
-}
-.menu:hover nav {
-  left: 5%;
-}
-body {
-  background: #ffffff;
-  box-sizing: content-box;
-}
-
-nav {
-  position: absolute;
-  margin-top: 80%;
-  left: -1000px;
-  transition: 0.5s;
-}
-nav ul {
-  color: rgb(0, 0, 0);
-  text-transform: uppercase;
-  list-style-type: none;
-}
-nav li {
-  line-height: 2em;
-  letter-spacing: 0.3em;
-}
-nav a {
-  font-size: 30px;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-}
-nav a:hover {
-  color: rgb(255, 0, 0);
-} */
 label {
   display: block;
   margin-top: 10px;
@@ -162,7 +115,7 @@ label {
   padding: 40px 40px;
 }
 .card {
-  background-color: #f7f7f7;
+  background-color: #5ee965;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;

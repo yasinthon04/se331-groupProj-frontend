@@ -1,4 +1,5 @@
 <template>
+  <h1>Login</h1>
   <div class="col-md-12">
     <div class="card card-container">
       <img
@@ -80,9 +81,8 @@ label {
   padding: 40px 40px;
 }
 .card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
+  background-color: #5ee965;
+  margin: 0 auto;
   margin-top: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;

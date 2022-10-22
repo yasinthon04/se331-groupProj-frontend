@@ -74,7 +74,7 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Poppins:800');
 .card {
-  margin-left: 50px;
+  margin-left: 20px;
   padding: 13px;
   max-width: 318px;
   width: 100%;

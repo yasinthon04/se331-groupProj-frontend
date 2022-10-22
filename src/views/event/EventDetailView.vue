@@ -41,22 +41,27 @@
 
       <div class="stats">
         <div class="box box1 hvr-underline-from-right">
-          <span class="value">523</span>
-          <span class="parameter">Posts</span>
+          <span class="value"
+            ><router-link :to="{ name: 'EventDetails' }"
+              >Details</router-link
+            ></span
+          >
         </div>
         <div class="box box2 hvr-underline-from-right">
-          <span class="value">1387</span>
-          <span class="parameter">Likes</span>
+          <span class="value"
+            ><router-link :to="{ name: 'EventRegister' }"
+              >Register</router-link
+            ></span
+          >
         </div>
         <div class="box box3 hvr-underline-from-right">
-          <span class="value">146</span>
-          <span class="parameter">Followers</span>
+          <span class="value"
+            ><router-link :to="{ name: 'EventEdit' }">Edit</router-link></span
+          >
         </div>
       </div>
     </div>
   </div>
-  <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-  <p>{{ event.description }}</p>
   <img v-for="url in event.imageUrls" :key="url" :src="url" />
 </template>
 
@@ -84,7 +89,7 @@ body {
 .frame {
   position: absolute;
   top: 35%;
-  left: 40%;
+  left: 42%;
   width: 700px;
   height: 700px;
   margin-top: -200px;
@@ -92,7 +97,7 @@ body {
   border-radius: 2px;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.6);
   background: #5ee965;
-  color: #786450;
+  color: #405cd2;
   font-family: 'Josefin slab', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -117,7 +122,7 @@ body {
 .profile {
   float: left;
   width: 600px;
-  height: 450px;
+  height: 500px;
   text-align: center;
 }
 
@@ -267,7 +272,7 @@ svg {
 
 .stats .box {
   box-sizing: border-box;
-  width: 120px;
+  width: 200px;
   height: 99px;
   background: #f5e8df;
   text-align: center;
