@@ -93,7 +93,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
 }
 .menu {
   position: fixed;
@@ -101,7 +101,7 @@ export default {
   background: #5ee965;
   width: 2vw;
   box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
-  transition: 1s;
+  transition: 0.5s;
 }
 .menu:hover {
   width: 15vw;
@@ -113,7 +113,8 @@ export default {
   left: 0%;
 }
 body {
-  background: #ffffff;
+  background-color: rgb(240, 255, 157);
+  background: #e4ff99;
   box-sizing: content-box;
 }
 
