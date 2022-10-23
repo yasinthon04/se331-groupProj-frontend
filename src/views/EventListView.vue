@@ -136,6 +136,10 @@ export default {
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Poppins:800');
+h1 {
+  padding-top: 5%;
+}
+
 .row {
   display: flex;
   flex-direction: row;

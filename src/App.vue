@@ -113,8 +113,7 @@ export default {
   left: 0%;
 }
 body {
-  background-color: rgb(255, 255, 255);
-  background: #ffffff;
+  background: rgb(220, 42, 42);
   box-sizing: content-box;
 }
 
