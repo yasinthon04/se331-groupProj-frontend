@@ -78,7 +78,7 @@ export default {
   padding: 13px;
   max-width: 318px;
   width: 100%;
-  background: linear-gradient(-120deg, #33ff55 0%, #53a0fd 60%, #db5151 100%);
+  background: linear-gradient(-120deg, #bcdfff 0%, #53a0fd 60%, #462ecc 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,7 +100,7 @@ export default {
   left: 0;
   right: 0;
   mix-blend-mode: multiply;
-  background: linear-gradient(-150deg, #33ff55 0%, #1897e1 100%);
+  background: linear-gradient(-150deg, #ff76f4 0%, #1897e1 100%);
   z-index: 1;
 }
 .card__photo {

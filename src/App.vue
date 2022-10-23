@@ -98,7 +98,7 @@ export default {
 .menu {
   position: fixed;
   height: 100vh;
-  background: #5ee965;
+  background: #53a0fd;
   width: 2vw;
   box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
   transition: 0.5s;

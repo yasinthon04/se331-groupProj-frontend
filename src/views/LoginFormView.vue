@@ -1,38 +1,42 @@
 <template>
-  <h1>Login</h1>
-  <div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <Form @submit="handleLogin" :validation-schema="schema">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <Field name="username" type="text" class="form-control" />
-          <ErrorMessage name="username" class="error-feedback" />
+  <div class="form-head">
+    <legend><i class="fas fa-unlock"></i> Login Form</legend>
+    <div class="form-input">
+      <div class="col-md-12">
+        <div class="card card-container">
+          <img
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            class="profile-img-card"
+          />
+          <Form @submit="handleLogin" :validation-schema="schema">
+            <div class="form-input">
+              <label for="username"><i class="fas fa-user"></i>Username</label>
+              <Field name="username" type="text" class="in" />
+              <ErrorMessage name="username" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="password">Password</label>
+              <Field name="password" type="password" class="in" />
+              <ErrorMessage name="password" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <button class="button" :disabled="loading">
+                <span
+                  v-show="loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                <span>Login</span>
+              </button>
+            </div>
+            <div class="form-input">
+              <div v-if="message" class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+            </div>
+          </Form>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <Field name="password" type="password" class="form-control" />
-          <ErrorMessage name="password" class="error-feedback" />
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block" :disabled="loading">
-            <span
-              v-show="loading"
-              class="spinner-border spinner-border-sm"
-            ></span>
-            <span>Login</span>
-          </button>
-        </div>
-        <div class="form-group">
-          <div v-if="message" class="alert alert-danger" role="alert">
-            {{ message }}
-          </div>
-        </div>
-      </Form>
+      </div>
     </div>
   </div>
 </template>
@@ -75,10 +79,16 @@ export default {
 label {
   display: block;
   margin-top: 10px;
+  color: #000000;
 }
 .card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
+  display: block;
+  margin-top: 10px;
+  border: 3px solid #3d5af1;
+  background-color: #e2f3f5;
+  border-radius: 8px;
+  width: 300px;
+  padding: 8px 10px;
 }
 .card {
   background-color: #5ee965;
@@ -90,6 +100,37 @@ label {
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+button {
+  margin-top: 10px;
+  border: 3px solid #3d5af1;
+  background-color: #0e153a;
+  border-radius: 8px;
+  color: #e2f3f5;
+  margin-right: auto;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+.in {
+  display: block;
+  margin-top: 10px;
+  border: 3px solid #3d5af1;
+  background-color: #e2f3f5;
+  border-radius: 8px;
+  width: 275px;
+}
+.form-input {
+  margin-top: 20px;
+}
+.form-head {
+  width: 350px;
+  border-radius: 8px;
+  margin: auto;
+}
+legend {
+  padding-left: 10px;
+  font-size: 2em;
+  text-align: center;
 }
 .profile-img-card {
   width: 96px;
