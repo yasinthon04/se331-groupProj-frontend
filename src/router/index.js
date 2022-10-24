@@ -27,19 +27,19 @@ const routes = [
     component: AboutView
   },
   {
-    path: '/event/:id',
+    path: '/people/:id',
     name: 'EventLayoutView',
     component: EventLayoutView,
     beforeEnter: (to) => {
       return EventService.getEvent(to.params.id)
         .then((response) => {
-          GStore.event = response.data
+          GStore.people = response.data
         })
         .catch((error) => {
           if (error.response && error.response.start == 404) {
             return {
               name: '404Resource',
-              parames: { resource: 'event' }
+              parames: { resource: 'people' }
             }
           } else {
             return { name: 'NetworkError' }

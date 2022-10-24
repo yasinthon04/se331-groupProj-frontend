@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  props: ['id', 'event']
+  props: ['id', 'people']
 }
 </script>

@@ -12,9 +12,9 @@
     </div>
     <div class="row">
       <EventCard
-        v-for="event in events"
-        :key="event.id"
-        :event="event"
+        v-for="people in peoples"
+        :key="people.id"
+        :people="people"
       ></EventCard>
     </div>
 
@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-      events: null,
+      people: null,
       totalEvents: 0,
       keyword: null
     }
@@ -72,7 +72,7 @@ export default {
     EventService.getEvents(3, parseInt(routeTo.query.page) || 1)
       .then((response) => {
         next((comp) => {
-          comp.events = response.data
+          comp.people = response.data
           comp.totalEvents = response.headers['x-total-count']
         })
       })
@@ -97,7 +97,7 @@ export default {
 
     queryFunction
       .then((response) => {
-        this.events = response.data // <---
+        this.people = response.data // <---
         this.totalEvents = response.headers['x-total-count'] // <---
       })
       .catch(() => {
@@ -116,7 +116,7 @@ export default {
       queryFunction
         .then((response) => {
           this.events = response.data
-          console.log(this.events)
+          console.log(this.people)
           this.totalEvents = response.headers['x-total-count']
           console.log(this.totalEvents)
         })

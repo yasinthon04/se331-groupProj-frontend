@@ -13,8 +13,8 @@
           />
         </div>
 
-        <div class="name">{{ event.title }}</div>
-        <div class="job">{{ event.organizer.name }}</div>
+        <div class="name">{{ people.name }}</div>
+        <div class="age">{{ people.age }}</div>
 
         <div>
           <svg
@@ -62,12 +62,12 @@
       </div>
     </div>
   </div>
-  <img v-for="url in event.imageUrls" :key="url" :src="url" />
+  <img v-for="url in people.imageUrls" :key="url" :src="url" />
 </template>
 
 <script>
 export default {
-  props: ['id', 'event']
+  props: ['id', 'people']
 }
 </script>
 <style scoped>

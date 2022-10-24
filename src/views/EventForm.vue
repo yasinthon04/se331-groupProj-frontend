@@ -4,7 +4,7 @@
       <h1>Create an event</h1>
       <form @submit.prevent="saveEvent">
         <BaseInput
-          v-model="event.category"
+          v-model="people.category"
           type="text"
           label="Category"
           class="field"
@@ -12,10 +12,10 @@
 
         <h3>Name & describe your event</h3>
 
-        <BaseInput v-model="event.title" type="text" label="Title" />
+        <BaseInput v-model="people.title" type="text" label="Title" />
 
         <BaseInput
-          v-model="event.description"
+          v-model="people.description"
           type="text"
           label="Description"
         />
@@ -24,7 +24,7 @@
 
         <label>Location</label>
 
-        <BaseInput v-model="event.location" type="text" label="Location" />
+        <BaseInput v-model="people.location" type="text" label="Location" />
 
         <h3>Who is your organizer?</h3>
 
@@ -39,7 +39,7 @@
         <button type="submit">Submit</button>
       </form>
 
-      <pre>{{ event }}</pre>
+      <pre>{{ people }}</pre>
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      event: {
+      people: {
         category: '',
         title: '',
         description: '',

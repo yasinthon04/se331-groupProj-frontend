@@ -1,8 +1,9 @@
 <template>
-  <div v-if="event">
-    <h1>{{ event.title }}</h1>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
+  <div v-if="people">
+    <h1>{{ people.name }}{{ people.surname }}</h1>
+    <p>{{ people.age }}</p>
+    <p>{{ people.hometown }}</p>
+    <p>{{ people.vaccine }}</p>
   </div>
 </template>
 
@@ -13,14 +14,14 @@ export default {
   props: ['id'],
   data() {
     return {
-      event: null
+      people: null
     }
   },
   created() {
     // fetch event (by id) and set local event data
     EventService.getEvent(this.id)
       .then((response) => {
-        this.event = response.data
+        this.people = response.data
       })
       .catch((error) => {
         console.log(error)

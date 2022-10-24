@@ -1,7 +1,7 @@
 <template>
   <router-link
     class="event-link"
-    :to="{ name: 'EventLayoutView', params: { id: event.id } }"
+    :to="{ name: 'EventLayoutView', params: { id: people.id } }"
   >
     <li class="card" aria-labelledby="event card">
       <div class="card__filter">
@@ -12,11 +12,10 @@
         />
       </div>
       <div class="card__container">
-        <h2>{{ event.title }}</h2>
-        <time
-          ><span>@{{ event.time }} on {{ event.date }}</span></time
-        >
-        <p>{{ event.organizer.name }}</p>
+        <h1>{{ people.name }}{{ people.surname }}</h1>
+        <p>{{ people.age }}</p>
+        <p>{{ people.hometown }}</p>
+        <p>{{ people.vaccine }}</p>
 
         <!-- <div class="card__buttons">
           <a
@@ -46,7 +45,7 @@
 export default {
   name: 'EventCard',
   props: {
-    event: {
+    people: {
       type: Object,
       required: true
     }
