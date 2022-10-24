@@ -12,7 +12,7 @@
     </div>
     <div class="row">
       <EventCard
-        v-for="people in peoples"
+        v-for="people in people"
         :key="people.id"
         :people="people"
       ></EventCard>
