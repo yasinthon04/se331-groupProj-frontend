@@ -14,8 +14,11 @@
         </div>
 
         <div class="name">{{ people.name }} {{ people.surname }}</div>
-        <h4>Age : {{ people.age }}</h4>
-        <h4>Address : {{ people.hometown }}</h4>
+        <h4>First-dose : {{ people.vaccines[0].name }}</h4>
+        <h4>Date : {{ people.vaccines[0].date }}</h4>
+        <h4>Second-dose : {{ people.vaccines[1].name }}</h4>
+        <h4>Date : {{ people.vaccines[1].date }}</h4>
+
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"

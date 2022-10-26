@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@/views/EventListView.vue'
-import EventEditView from '@/views/event/EventEditView.vue'
-import EventRegisterView from '@/views/event/EventRegisterView.vue'
+import EventDoctorView from '@/views/event/EventDoctorView.vue'
+import EventVaccineView from '@/views/event/EventVaccineView.vue'
 import AboutView from '../views/AboutView.vue'
 import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
@@ -55,16 +55,16 @@ const routes = [
         props: true
       },
       {
-        path: 'register',
-        name: 'EventRegister',
+        path: 'vaccine',
+        name: 'EventVaccine',
         props: true,
-        component: EventRegisterView
+        component: EventVaccineView
       },
       {
-        path: 'edit',
-        name: 'EventEdit',
+        path: 'doctor',
+        name: 'EventDoctor',
         props: true,
-        component: EventEditView
+        component: EventDoctorView
       }
     ]
   },
