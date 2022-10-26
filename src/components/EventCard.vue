@@ -12,10 +12,9 @@
         />
       </div>
       <div class="card__container">
-        <h1>{{ people.name }}{{ people.surname }}</h1>
+        <h1>{{ people.name }} {{ people.surname }}</h1>
         <p>{{ people.age }}</p>
         <p>{{ people.hometown }}</p>
-        <p>{{ people.vaccine }}</p>
 
         <!-- <div class="card__buttons">
           <a
