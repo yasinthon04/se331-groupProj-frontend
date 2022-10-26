@@ -32,11 +32,6 @@
             ></path>
           </svg>
         </div>
-
-        <!-- <div class="actions">
-          <button class="btn hvr-underline-from-center">Follow</button>
-          <button class="btn hvr-underline-from-center">Message</button>
-        </div> -->
       </div>
 
       <div class="stats">
@@ -123,8 +118,8 @@ body {
 
 .profile {
   float: left;
-  width: 600px;
-  height: 500px;
+  width: 650px;
+  height: 550px;
   text-align: center;
 }
 

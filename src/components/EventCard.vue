@@ -12,30 +12,9 @@
         />
       </div>
       <div class="card__container">
-        <h1>{{ people.name }} {{ people.surname }}</h1>
-        <p>{{ people.age }}</p>
-        <p>{{ people.hometown }}</p>
-
-        <!-- <div class="card__buttons">
-          <a
-            href="#"
-            class="card__buttons btn primary"
-            role="button"
-            aria-haspopup="false"
-          >
-            Details
-            <div class="card__fill"></div>
-          </a>
-          <a
-            href="#"
-            class="card__buttons btn secondary"
-            role="button"
-            aria-haspopup="false"
-          >
-            Vaccine
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div> -->
+        <div class="name">{{ people.name }} {{ people.surname }}</div>
+        <div>{{ people.age }}</div>
+        <div>{{ people.hometown }}</div>
       </div>
     </li>
   </router-link>
@@ -52,6 +31,16 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab|Lobster');
+.name {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  color: #405cd2;
+  font-family: 'Josefin slab', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .event-card {
   padding: 20px;
   width: 250px;
@@ -112,7 +101,13 @@ export default {
   flex-direction: column;
   justify-content: center;
   padding: 1em;
+  font-size: 1.5rem;
   box-sizing: border-box;
+  color: #405cd2;
+  font-family: 'Josefin slab', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 .card h2 {
   font-family: 'Poppins', sans-serif;
