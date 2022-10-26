@@ -2,23 +2,8 @@
   <div class="frame flex">
     <div class="center">
       <div class="profile">
-        <div class="image">
-          <div class="circle-1"></div>
-          <div class="circle-2"></div>
-          <img
-            src="https://images.unsplash.com/photo-1536444894718-0021cbbeb45f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="Jessica Potter"
-            width="70"
-            height="70"
-          />
-        </div>
-
-        <div class="name">{{ people.name }} {{ people.surname }}</div>
-        <h4>First-dose : {{ people.vaccines[0].name }}</h4>
-        <h4>Date : {{ people.vaccines[0].date }}</h4>
-        <h4>Second-dose : {{ people.vaccines[1].name }}</h4>
-        <h4>Date : {{ people.vaccines[1].date }}</h4>
-
+        <ReviewForm @review-submited="addReview" />
+        <ReviewList v-if="GStore.reviews" :reviews="GStore.people.doctor_com" />
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,11 +20,6 @@
             ></path>
           </svg>
         </div>
-
-        <!-- <div class="actions">
-          <button class="btn hvr-underline-from-center">Follow</button>
-          <button class="btn hvr-underline-from-center">Message</button>
-        </div> -->
       </div>
 
       <div class="stats">
@@ -71,8 +51,22 @@
 </template>
 
 <script>
+import ReviewForm from '@/components/ReviewForm.vue'
+import ReviewList from '@/components/ReviewList.vue'
+import GStore from '@/store'
 export default {
-  props: ['people']
+  inject: ['GStore'],
+  props: ['people'],
+  components: { ReviewForm, ReviewList },
+  methods: {
+    addReview(review) {
+      this.GStore.reviews.push(review)
+      GStore.people.doctor_com = GStore.reviews.filter(
+        (people) => GStore.people.id == people.patient_id
+      )
+      console.log(GStore.reviews.patient_id)
+    }
+  }
 }
 </script>
 <style scoped>
