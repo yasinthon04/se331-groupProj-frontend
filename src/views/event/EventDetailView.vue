@@ -157,7 +157,7 @@ body {
 .profile .image .circle-2 {
   width: 250px;
   height: 250px;
-  border-color: #786450 transparent #786450 #786450;
+  border-color: #ff0800 transparent #786450 #786450;
   animation: circle 2s;
 }
 

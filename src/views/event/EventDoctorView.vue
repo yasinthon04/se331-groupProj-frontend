@@ -120,8 +120,8 @@ body {
 
 .profile {
   float: left;
-  width: 600px;
-  height: 500px;
+  width: 650px;
+  height: 550px;
   text-align: center;
 }
 
