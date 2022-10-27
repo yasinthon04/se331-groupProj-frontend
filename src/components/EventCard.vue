@@ -5,16 +5,18 @@
   >
     <li class="card" aria-labelledby="event card">
       <div class="card__filter">
-        <img
+        <!-- <img
           class="card__photo"
           src="https://i1.sndcdn.com/artworks-000192685399-co64se-t500x500.jpg"
           alt="A man in colorful clothing with the sun behind him on a beach."
-        />
+        /> -->
+        <img class="card__photo" :src="people.imgUrls" />
       </div>
       <div class="card__container">
         <div class="name">{{ people.name }} {{ people.surname }}</div>
         <div>{{ people.age }}</div>
         <div>{{ people.hometown }}</div>
+        <!-- <div>{{ people }}</div> -->
       </div>
     </li>
   </router-link>

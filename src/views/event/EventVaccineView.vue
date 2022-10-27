@@ -5,12 +5,7 @@
         <div class="image">
           <div class="circle-1"></div>
           <div class="circle-2"></div>
-          <img
-            src="https://images.unsplash.com/photo-1536444894718-0021cbbeb45f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="Jessica Potter"
-            width="70"
-            height="70"
-          />
+          <img :src="people.imgUrls" width="70" height="70" />
         </div>
 
         <div class="name">{{ people.name }} {{ people.surname }}</div>

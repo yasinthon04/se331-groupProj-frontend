@@ -5,14 +5,8 @@
         <div class="image">
           <div class="circle-1"></div>
           <div class="circle-2"></div>
-          <img
-            src="https://images.unsplash.com/photo-1536444894718-0021cbbeb45f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="Jessica Potter"
-            width="70"
-            height="70"
-          />
+          <img :src="people.imgUrls" width="70" height="70" />
         </div>
-
         <div class="name">{{ people.name }} {{ people.surname }}</div>
         <h4>Age : {{ people.age }}</h4>
         <h4>Address : {{ people.hometown }}</h4>
@@ -27,6 +21,7 @@
               id="wave"
               fill="none"
               stroke="#262626"
+              s
               stroke-width="2"
               stroke-linecap="round"
             ></path>
