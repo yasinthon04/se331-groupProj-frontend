@@ -67,7 +67,7 @@ export default {
   padding: 13px;
   max-width: 318px;
   width: 100%;
-  background: linear-gradient(-120deg, #bcdfff 0%, #53a0fd 60%, #462ecc 100%);
+  background: linear-gradient(-120deg, #ff86f5 0%, #53a0fd 60%, #462ecc 100%);
   display: flex;
   justify-content: center;
   align-items: center;

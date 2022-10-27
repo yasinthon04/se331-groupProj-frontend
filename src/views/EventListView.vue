@@ -19,25 +19,22 @@
 
     <div class="pagination">
       <div class="card__buttons">
-        <div class="card__buttons btn primary">
-          <router-link
-            id="page-prev"
-            :to="{ name: 'EventList', query: { page: page - 1 } }"
-            rel="prev"
-            v-if="page != 1"
-          >
-            Prev Page
-          </router-link>
+        <router-link
+          id="page-prev"
+          :to="{ name: 'EventList', query: { page: page - 1 } }"
+          rel="prev"
+          v-if="page != 1"
+        >
+          <div class="card__buttons btn left">Prev Page</div>
+        </router-link>
 
-          <router-link
-            id="page-next"
-            :to="{ name: 'EventList', query: { page: page + 1 } }"
-            rel="next"
-            v-if="hasNextPage"
-          >
-            Next Page
-          </router-link>
-        </div>
+        <router-link
+          id="page-next"
+          :to="{ name: 'EventList', query: { page: page + 1 } }"
+          rel="next"
+          v-if="hasNextPage"
+          ><div class="card__buttons btn right">Next Page</div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -165,8 +162,8 @@ h1 {
 .pagination {
   display: flex;
   padding-top: 10;
-  width: 150px;
-  margin-right: 100;
+  width: 250px;
+  align-items: center;
 }
 
 .pagination a {
@@ -183,14 +180,9 @@ h1 {
   text-align: right;
 }
 
-.search-box {
-  width: 300px;
-}
-
 .card__buttons {
   display: flex;
-  align-items: right;
-  width: 100%;
+  align-items: center;
   margin: 1.5em 0 0.5em 0;
   flex-direction: row;
 }
@@ -215,11 +207,18 @@ h1 {
   -webkit-animation: levitate 0.3s ease infinite;
   animation: levitate 0.3s ease infinite;
 }
-.card__buttons .primary {
-  position: relative;
-  background-image: linear-gradient(to right, #1897e1, #3022ad);
+.card__buttons .left {
+  position: left;
+  background-image: linear-gradient(to right, #1897e1, #3022ad, #ff77c2);
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+.card__buttons .right {
+  position: right;
+  background-image: linear-gradient(to right, #1897e1, #3022ad, #ff77c2);
   background-size: 150% 150%;
   transition: all 0.4s ease;
   z-index: 1;
+  padding-right: 10px;
 }
 </style>
