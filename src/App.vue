@@ -23,8 +23,7 @@
             <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
               <li class="nav-item">
                 <router-link to="/register" class="nav-link">
-                  <font-awesome-icon icon="user-plus" /><br />
-                  Sign Up
+                  <font-awesome-icon icon="user-plus" /> Sign Up
                 </router-link>
               </li>
               <li class="nav-item">
@@ -98,22 +97,27 @@ export default {
 }
 .menu {
   position: fixed;
-  height: 100vh;
+  height: 100%;
   background: #53a0fd;
   width: 2vw;
   box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 }
 .menu:hover {
-  width: 15vw;
+  width: 15%;
   z-index: 10;
-  font-size: 10px;
 }
 .menu:hover ~ .container {
   transform: perspective(40vw) rotateY(5deg) translateX(17vw) scaleY(0.6);
 }
 .menu:hover nav {
   left: 0%;
+}
+@media only screen and (max-width: 1024px) {
+  .menu:hover {
+    width: 55%;
+    z-index: 10;
+  }
 }
 body {
   background: rgb(220, 42, 42);
@@ -122,7 +126,7 @@ body {
 
 nav {
   position: absolute;
-  margin-top: 120%;
+  margin-top: 100%;
   left: -1000px;
   transition: 0.5s;
 }

@@ -1,5 +1,5 @@
 <template>
-  <h1>People' vaccinated</h1>
+  <div class="name">People' vaccinated</div>
 
   <div class="events">
     <div class="search-box">
@@ -137,6 +137,16 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Poppins:800');
 h1 {
+  padding-top: 5%;
+}
+.name {
+  font-weight: bolder;
+  font-size: 3rem;
+  text-align: center;
+  color: #405cd2;
+  font-family: 'Josefin slab', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding-top: 5%;
 }
 
