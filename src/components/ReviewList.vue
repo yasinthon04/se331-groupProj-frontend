@@ -25,7 +25,7 @@ export default {
 
 <style>
 #doctorSuggest-card {
-  background-color: #e8d3a3;
+  background-color: #95c4ff;
   padding: 20px;
   margin: auto;
   border-radius: 10px;

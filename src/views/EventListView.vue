@@ -1,15 +1,14 @@
 <template>
   <div class="name">People' vaccinated</div>
-
   <div class="events">
-    <div class="search-box">
+    <!-- <div class="search-box">
       <BaseInput
         v-model="keyword"
         type="text"
         label="Search..."
         @input="updateKeyword"
       />
-    </div>
+    </div> -->
     <div class="row">
       <EventCard
         v-for="people in people"

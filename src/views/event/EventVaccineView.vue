@@ -275,7 +275,7 @@ svg {
   box-sizing: border-box;
   width: 200px;
   height: 99px;
-  background: #f5e8df;
+  background: #95c4ff;
   text-align: center;
   padding-top: 28px;
   transition: all 0.4s ease-in-out;
@@ -323,7 +323,7 @@ svg {
   left: 100%;
   right: 0;
   bottom: 0;
-  background: #644e72;
+  background: #ffffff;
   height: 99px;
   transition-property: left;
   transition-duration: 0.3s;

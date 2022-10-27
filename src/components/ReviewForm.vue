@@ -70,7 +70,7 @@ body {
   width: 425px;
   border: 2px solid #000000;
   border-radius: 10px;
-  background-color: #e8d3a3;
+  background-color: #95c4ff;
   -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
@@ -110,12 +110,12 @@ ul {
 }
 .button {
   margin: 30px;
-  background-color: #ffa633;
+  background-color: black;
   border-radius: 5px;
   font-size: 18px;
   width: 100px;
   height: 60px;
-  color: black;
+  color: white;
   padding: 20px;
   box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
     inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
