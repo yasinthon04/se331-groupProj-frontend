@@ -15,15 +15,38 @@
             <ErrorMessage name="username" class="error-feedback" />
           </div>
           <div class="form-input">
+            <label for="password">Password</label>
+            <Field name="password" type="password" class="in" />
+            <ErrorMessage name="password" class="error-feedback" />
+          </div>
+          <div class="form-input">
+            <label for="name">Name</label>
+            <Field name="name" type="name" class="in" />
+            <ErrorMessage name="name" class="error-feedback" />
+          </div>
+          <div class="form-input">
+            <label for="surname">Surname</label>
+            <Field name="surname" type="surname" class="in" />
+            <ErrorMessage name="surname" class="error-feedback" />
+          </div>
+          <div class="form-input">
             <label for="email">Email</label>
             <Field name="email" type="email" class="in" />
             <ErrorMessage name="email" class="error-feedback" />
           </div>
           <div class="form-input">
-            <label for="password">Password</label>
-            <Field name="password" type="password" class="in" />
-            <ErrorMessage name="password" class="error-feedback" />
+            <label for="age">Age</label>
+            <Field name="age" type="age" class="in" />
+            <ErrorMessage name="age" class="error-feedback" />
           </div>
+          <div class="form-input">
+            <label for="homeown">Hometown</label>
+            <Field name="homeown" type="homeown" class="in" />
+            <ErrorMessage name="homeown" class="error-feedback" />
+          </div>
+          <label for="img">Upload your image.</label>
+          <UploadImages @changed="handleImages" />
+
           <div class="form-input">
             <button class="button" :disabled="loading">
               <span
@@ -50,13 +73,15 @@
 <script>
 import AuthService from '@/services/AuthService.js'
 import { Form, Field, ErrorMessage } from 'vee-validate'
+import UploadImages from 'vue-upload-drop-images'
 import * as yup from 'yup'
 export default {
   name: 'RegisterView',
   components: {
     Form,
     Field,
-    ErrorMessage
+    ErrorMessage,
+    UploadImages
   },
   //eslint-disable-next-line
     inject:['GStore'],
@@ -103,6 +128,9 @@ export default {
       this.message = ''
       this.successful = false
       this.loading = true
+    },
+    handleImages(files) {
+      this.files = files
     }
   }
 }
