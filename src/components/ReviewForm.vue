@@ -4,16 +4,8 @@
       <h3>Doctor Comment</h3>
       <label for="suggestion">Comment:</label>
       <textarea id="suggestion" v-model="suggestion"></textarea>
-
       <input class="button" type="submit" value="Submit" />
     </form>
-    <div class="review-form">
-      <ul>
-        <li v-for="(review, index) in reviews" :key="index">
-          Dortor's Suggestion: "{{ review.suggestion }}"
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 

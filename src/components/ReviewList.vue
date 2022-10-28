@@ -4,10 +4,6 @@
       <h3>Doctor Comment:</h3>
       <ul>
         <li v-for="(review, index) in reviews" :key="index">
-          Date: {{ review.date }}
-          <br />
-          Doctor's Name: {{ review.name }}
-          <br />
           Dortor's Suggestion: "{{ review.suggestion }}"
           <br />
         </li>
