@@ -12,11 +12,11 @@
           <li>
             <router-link :to="{ name: 'about' }">About</router-link><br />
           </li>
-          <!-- <span v-if="isAdmin">
+          <span v-if="isAdmin">
             <li>
               <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
             </li>
-          </span> -->
+          </span>
         </ul>
         <div id="nav">
           <nav class="navbar navbar-expand">
@@ -115,7 +115,7 @@ export default {
 }
 @media only screen and (max-width: 1024px) {
   .menu:hover {
-    width: 55%;
+    width: 60%;
     z-index: 10;
   }
 }

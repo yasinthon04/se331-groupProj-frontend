@@ -5,14 +5,15 @@
       <label for="suggestion">Comment:</label>
       <textarea id="suggestion" v-model="suggestion"></textarea>
 
-      <label for="date">Name:</label>
-      <input id="date" v-model="date" />
-
-      <label for="name">Email:</label>
-      <input id="name" v-model="name" />
-
       <input class="button" type="submit" value="Submit" />
     </form>
+    <div class="review-form">
+      <ul>
+        <li v-for="(review, index) in reviews" :key="index">
+          Dortor's Suggestion: "{{ review.suggestion }}"
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      if (this.name === '' || this.suggestion === '' || this.date === '') {
+      if (this.suggestion === '') {
         alert('This Form is incomplete. Please fill out evert field.')
         return
       }

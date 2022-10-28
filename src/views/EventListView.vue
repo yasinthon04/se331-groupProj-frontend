@@ -1,14 +1,6 @@
 <template>
   <div class="name">People' vaccinated</div>
   <div class="events">
-    <!-- <div class="search-box">
-      <BaseInput
-        v-model="keyword"
-        type="text"
-        label="Search..."
-        @input="updateKeyword"
-      />
-    </div> -->
     <div class="row">
       <EventCard
         v-for="people in people"
@@ -17,28 +9,30 @@
       ></EventCard>
     </div>
 
-    <div class="pagination">
-      <div class="pagination a">
-        <router-link
-          id="page-prev"
-          :to="{ name: 'EventList', query: { page: page - 1 } }"
-          rel="prev"
-          v-if="page != 1"
-        >
-          <div class="btn">Prev Page</div>
-        </router-link>
+    <span v-if="isAdmin || isDoctor">
+      <div class="pagination">
+        <div class="pagination a">
+          <router-link
+            id="page-prev"
+            :to="{ name: 'EventList', query: { page: page - 1 } }"
+            rel="prev"
+            v-if="page != 1"
+          >
+            <div class="btn">Prev Page</div>
+          </router-link>
+        </div>
+        <div class="pagination a">
+          <router-link
+            id="page-next"
+            :to="{ name: 'EventList', query: { page: page + 1 } }"
+            rel="next"
+            v-if="hasNextPage"
+          >
+            <div class="btn">Next Page</div>
+          </router-link>
+        </div>
       </div>
-      <div class="pagination a">
-        <router-link
-          id="page-next"
-          :to="{ name: 'EventList', query: { page: page + 1 } }"
-          rel="next"
-          v-if="hasNextPage"
-        >
-          <div class="btn">Next Page</div>
-        </router-link>
-      </div>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -46,8 +40,9 @@
 // @ is an alias to /src
 import EventCard from '@/components/EventCard.vue'
 import PeopleService from '@/services/PeopleService.js'
-
+import AuthService from '@/services/AuthService.js'
 export default {
+  inject: ['GStore'],
   name: 'EventListView',
   props: {
     page: {
@@ -128,6 +123,18 @@ export default {
     hasNextPage() {
       let totalPages = Math.ceil(this.totalPeoples / 3)
       return this.page < totalPages
+    },
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
+    },
+    isUser() {
+      return AuthService.hasRoles('ROLE_USER')
     }
   }
 }

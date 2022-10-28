@@ -14,9 +14,27 @@ import PeopleService from '@/services/PeopleService'
 import DoctorService from '@/services/DoctorService.js'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
+import WelcomePage from '@/views/WelcomePage.vue'
 const routes = [
   {
     path: '/',
+    name: 'Welcome',
+    component: WelcomePage,
+    beforeEnter: () => {
+      if (GStore.currentUser.authorities == 'ROLE_USER') {
+        return {
+          name: 'EventDetails',
+          params: { id: GStore.currentUser.id }
+        }
+      }
+      return {
+        name: 'EventList'
+      }
+    },
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
+  },
+  {
+    path: '/home',
     name: 'EventList',
     component: EventListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
@@ -93,6 +111,16 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+    // beforeEnter: () => {
+    //   if (GStore.currentUser.authorities == 'ROLE_ADMIN') {
+    //     return {
+    //       name: 'EventList'
+    //     }
+    //   }
+    //   return {
+    //     name: '/'
+    //   }
+    // }
   },
   {
     path: '/register',

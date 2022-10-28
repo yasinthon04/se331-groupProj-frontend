@@ -65,7 +65,7 @@ export default {
     addReview(review) {
       this.GStore.reviews.push(review)
       GStore.people.doctor_com = GStore.reviews.filter(
-        (people) => GStore.people.id == people.patient_id
+        (people) => GStore.people.id == people.id
       )
       console.log(GStore.reviews.patient_id)
     },
@@ -74,6 +74,12 @@ export default {
     },
     isAdmin() {
       return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
+    },
+    isUser() {
+      return AuthService.hasRoles('ROLE_USER')
     },
     logout() {
       AuthService.logout()

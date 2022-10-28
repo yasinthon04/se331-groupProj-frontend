@@ -20,14 +20,14 @@
             <ErrorMessage name="password" class="error-feedback" />
           </div>
           <div class="form-input">
-            <label for="name">Name</label>
-            <Field name="name" type="name" class="in" />
-            <ErrorMessage name="name" class="error-feedback" />
+            <label for="firstname">Firstname</label>
+            <Field name="firstname" type="firstname" class="in" />
+            <ErrorMessage name="firstname" class="error-feedback" />
           </div>
           <div class="form-input">
-            <label for="surname">Surname</label>
-            <Field name="surname" type="surname" class="in" />
-            <ErrorMessage name="surname" class="error-feedback" />
+            <label for="lastname">Lastname</label>
+            <Field name="lastname" type="lastname" class="in" />
+            <ErrorMessage name="lastname" class="error-feedback" />
           </div>
           <div class="form-input">
             <label for="email">Email</label>
@@ -40,11 +40,11 @@
             <ErrorMessage name="age" class="error-feedback" />
           </div>
           <div class="form-input">
-            <label for="homeown">Hometown</label>
-            <Field name="homeown" type="homeown" class="in" />
-            <ErrorMessage name="homeown" class="error-feedback" />
+            <label for="hometown">Hometown</label>
+            <Field name="hometown" type="hometown" class="in" />
+            <ErrorMessage name="hometown" class="error-feedback" />
           </div>
-          <label for="img">Upload your image.</label>
+          <label for="image">Upload your image.</label>
           <UploadImages @changed="handleImages" />
 
           <div class="form-input">
@@ -74,6 +74,7 @@
 import AuthService from '@/services/AuthService.js'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import UploadImages from 'vue-upload-drop-images'
+import PeopleService from '@/services/PeopleService'
 import * as yup from 'yup'
 export default {
   name: 'RegisterView',
@@ -117,17 +118,26 @@ export default {
   },
   methods: {
     // eslint-disable-next-line
-    handleRegiter(user){
-      AuthService.register(user)
-        .then(() => {
-          this.$router.push({ path: '/' })
+    handleRegiter(user) {
+      Promise.all(
+        this.files.map((file) => {
+          return PeopleService.uploadFile(file)
         })
-        .catch(() => {
-          this.message = 'could not register'
-        })
-      this.message = ''
-      this.successful = false
-      this.loading = true
+      ).then((response) => {
+        console.log(response)
+        console.log(response.map((r) => r.data))
+        user.image = response.map((r) => r.data).toString()
+        AuthService.register(user)
+          .then(() => {
+            this.$router.push({ path: '/login' })
+          })
+          .catch(() => {
+            this.message = 'could not register'
+          })
+        this.message = ''
+        this.successful = false
+        this.loading = true
+      })
     },
     handleImages(files) {
       this.files = files
