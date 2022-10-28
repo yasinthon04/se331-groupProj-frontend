@@ -68,8 +68,24 @@
 </template>
 
 <script>
+import AuthService from '@/services/AuthService.js'
 export default {
-  props: ['id', 'people']
+  props: ['id', 'people'],
+  inject: ['GStore'],
+  computed: {
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    }
+  },
+  methods: {
+    logout() {
+      AuthService.logout()
+      this.$router.go()
+    }
+  }
 }
 </script>
 <style scoped>

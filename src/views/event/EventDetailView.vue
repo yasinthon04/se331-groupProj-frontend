@@ -1,58 +1,61 @@
 <template>
-  <div class="frame flex">
-    <div class="center">
-      <div class="profile">
-        <div class="image">
-          <div class="circle-1"></div>
-          <div class="circle-2"></div>
-          <img :src="people.imgUrls" width="70" height="70" />
-        </div>
-        <div class="name">{{ people.name }} {{ people.surname }}</div>
-        <h4>Age : {{ people.age }}</h4>
-        <h4>Address : {{ people.hometown }}</h4>
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40px"
-            height="30px"
-            viewBox="5 0 80 60"
-          >
-            <path
-              id="wave"
-              fill="none"
-              stroke="#262626"
-              s
-              stroke-width="2"
-              stroke-linecap="round"
-            ></path>
-          </svg>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="box box1 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventDetails' }"
-              >Details</router-link
-            ></span
-          >
-        </div>
-        <div class="box box2 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventVaccine' }"
-              >Vaccine Status</router-link
-            ></span
-          >
+  <div v-if="GStore.people">
+    <router-view :people="GStore.people" />
+    <div class="frame flex">
+      <div class="center">
+        <div class="profile">
+          <div class="image">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <img :src="people.imgUrls" width="70" height="70" />
+          </div>
+          <div class="name">{{ people.name }} {{ people.surname }}</div>
+          <h4>Age : {{ people.age }}</h4>
+          <h4>Address : {{ people.hometown }}</h4>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40px"
+              height="30px"
+              viewBox="5 0 80 60"
+            >
+              <path
+                id="wave"
+                fill="none"
+                stroke="#262626"
+                s
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </div>
         </div>
 
-        <div class="box box3 hvr-underline-from-right">
-          <span v-if="isAdmin">
+        <div class="stats">
+          <div class="box box1 hvr-underline-from-right">
             <span class="value"
-              ><router-link :to="{ name: 'EventDoctor' }"
-                >Doctor</router-link
+              ><router-link :to="{ name: 'EventDetails' }"
+                >Details</router-link
               ></span
             >
-          </span>
+          </div>
+          <div class="box box2 hvr-underline-from-right">
+            <span class="value"
+              ><router-link :to="{ name: 'EventVaccine' }"
+                >Vaccine Status</router-link
+              ></span
+            >
+          </div>
+
+          <div class="box box3 hvr-underline-from-right">
+            <span v-if="isAdmin">
+              <span class="value"
+                ><router-link :to="{ name: 'EventDoctor' }"
+                  >Doctor</router-link
+                ></span
+              >
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -61,24 +64,24 @@
 </template>
 
 <script>
-// import AuthService from '@/services/AuthService.js'
+import AuthService from '@/services/AuthService.js'
 export default {
-  props: ['id', 'people']
-  // inject: ['GStore'],
-  // computed: {
-  //   currentUser() {
-  //     return localStorage.getItem('user')
-  //   },
-  //   isAdmin() {
-  //     return AuthService.hasRoles('ROLE_ADMIN')
-  //   }
-  // },
-  // methods: {
-  //   logout() {
-  //     AuthService.logout()
-  //     this.$router.go()
-  //   }
-  // }
+  props: ['id', 'people'],
+  inject: ['GStore'],
+  computed: {
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    }
+  },
+  methods: {
+    logout() {
+      AuthService.logout()
+      this.$router.go()
+    }
+  }
 }
 </script>
 <style scoped>

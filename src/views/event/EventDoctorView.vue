@@ -38,11 +38,13 @@
           >
         </div>
         <div class="box box3 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventDoctor' }"
-              >Doctor</router-link
-            ></span
-          >
+          <span v-if="isAdmin">
+            <span class="value"
+              ><router-link :to="{ name: 'EventDoctor' }"
+                >Doctor</router-link
+              ></span
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -53,6 +55,7 @@
 <script>
 import ReviewForm from '@/components/ReviewForm.vue'
 import ReviewList from '@/components/ReviewList.vue'
+import AuthService from '@/services/AuthService.js'
 import GStore from '@/store'
 export default {
   inject: ['GStore'],
@@ -65,6 +68,16 @@ export default {
         (people) => GStore.people.id == people.patient_id
       )
       console.log(GStore.reviews.patient_id)
+    },
+    currentUser() {
+      return localStorage.getItem('user')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    logout() {
+      AuthService.logout()
+      this.$router.go()
     }
   }
 }
