@@ -18,22 +18,24 @@
     </div>
 
     <div class="pagination">
-      <div class="card__buttons">
+      <div class="pagination a">
         <router-link
           id="page-prev"
           :to="{ name: 'EventList', query: { page: page - 1 } }"
           rel="prev"
           v-if="page != 1"
         >
-          <div class="card__buttons btn left">Prev Page</div>
+          <div class="btn">Prev Page</div>
         </router-link>
-
+      </div>
+      <div class="pagination a">
         <router-link
           id="page-next"
           :to="{ name: 'EventList', query: { page: page + 1 } }"
           rel="next"
           v-if="hasNextPage"
-          ><div class="card__buttons btn right">Next Page</div>
+        >
+          <div class="btn">Next Page</div>
         </router-link>
       </div>
     </div>
@@ -161,64 +163,31 @@ h1 {
 }
 .pagination {
   display: flex;
-  padding-top: 10;
-  width: 250px;
+  justify-content: space-around;
   align-items: center;
 }
-
 .pagination a {
   flex: 1;
   text-decoration: none;
-  color: #ffffff;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 #page-prev {
   text-align: left;
 }
-
 #page-next {
   text-align: right;
 }
-
-.card__buttons {
-  display: flex;
-  align-items: center;
-  margin: 1.5em 0 0.5em 0;
-  flex-direction: row;
-}
-.card__buttons .btn {
-  font-family: 'IBM Plex Mono', sans-serif;
-  font-weight: regular;
-  font-size: 15px;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-align: center;
-  display: block;
-  flex: 1 1 100%;
+.btn {
+  border-radius: 5px;
+  border: 2px solid #4fb2aa;
+  background-image: linear-gradient(to left, #1897e1, #3022ad, #ff77c2);
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #fff;
-  padding: 1em;
-}
-.card__buttons .btn:hover {
-  -webkit-animation: gradient 0.3s ease infinite;
-  animation: gradient 0.3s ease infinite;
-}
-.card__buttons .btn:hover i {
-  -webkit-animation: levitate 0.3s ease infinite;
-  animation: levitate 0.3s ease infinite;
-}
-.card__buttons .left {
-  position: left;
-  background-image: linear-gradient(to right, #1897e1, #3022ad, #ff77c2);
-  transition: all 0.4s ease;
-  z-index: 1;
-}
-.card__buttons .right {
-  position: right;
-  background-image: linear-gradient(to right, #1897e1, #3022ad, #ff77c2);
-  background-size: 150% 150%;
-  transition: all 0.4s ease;
-  z-index: 1;
-  padding-right: 10px;
 }
 </style>
