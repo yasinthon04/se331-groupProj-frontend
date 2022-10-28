@@ -43,7 +43,7 @@
 <script>
 // @ is an alias to /src
 import EventCard from '@/components/EventCard.vue'
-import EventService from '@/services/EventService.js'
+import PeopleService from '@/services/PeopleService.js'
 
 export default {
   name: 'EventListView',
@@ -59,17 +59,17 @@ export default {
   data() {
     return {
       people: null,
-      totalEvents: 0,
+      totalPeoples: 0,
       keyword: null
     }
   },
   // eslint-disable-next-line no-unused-vars
   beforeRouteEnter(routeTo, routeFrom, next) {
-    EventService.getEvents(3, parseInt(routeTo.query.page) || 1)
+    PeopleService.getPeoples(3, parseInt(routeTo.query.page) || 1)
       .then((response) => {
         next((comp) => {
           comp.people = response.data
-          comp.totalEvents = response.headers['x-total-count']
+          comp.totalPeoples = response.headers['x-total-count']
         })
       })
       .catch(() => {
@@ -79,12 +79,12 @@ export default {
   beforeRouteUpdate(routeTo) {
     var queryFunction
     if (this.keyword == null || this.keyword === '') {
-      queryFunction = EventService.getEvents(
+      queryFunction = PeopleService.getPeoples(
         3,
         parseInt(routeTo.query.page) || 1
       )
     } else {
-      queryFunction = EventService.getEventByKeyword(
+      queryFunction = PeopleService.getPeopleByKeyword(
         this.keyword,
         3,
         parseInt(routeTo.query.page) || 1
@@ -104,17 +104,17 @@ export default {
     updateKeyword() {
       var queryFunction
       if (this.keyword === '') {
-        queryFunction = EventService.getEvents(3, 1)
+        queryFunction = PeopleService.getPeoples(3, 1)
       } else {
-        queryFunction = EventService.getEventByKeyword(this.keyword, 3, 1)
+        queryFunction = PeopleService.getPeopleByKeyword(this.keyword, 3, 1)
       }
 
       queryFunction
         .then((response) => {
-          this.events = response.data
+          this.people = response.data
           console.log(this.people)
-          this.totalEvents = response.headers['x-total-count']
-          console.log(this.totalEvents)
+          this.totalPeoples = response.headers['x-total-count']
+          console.log(this.totalPeoples)
         })
         .catch(() => {
           return { name: 'NetworkError' }
@@ -124,7 +124,7 @@ export default {
 
   computed: {
     hasNextPage() {
-      let totalPages = Math.ceil(this.totalEvents / 3)
+      let totalPages = Math.ceil(this.totalPeoples / 3)
       return this.page < totalPages
     }
   }

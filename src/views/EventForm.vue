@@ -1,37 +1,33 @@
 <template>
   <div class="row justify-content-md-center">
     <div>
-      <h1>Create an event</h1>
+      <h1>Name</h1>
       <form @submit.prevent="saveEvent">
         <BaseInput
-          v-model="people.category"
+          v-model="people.name"
           type="text"
-          label="Category"
+          label="Name"
           class="field"
         />
 
-        <h3>Name & describe your event</h3>
+        <h3>Surname</h3>
 
-        <BaseInput v-model="people.title" type="text" label="Title" />
+        <BaseInput v-model="people.surname" type="text" label="Title" />
 
-        <BaseInput
-          v-model="people.description"
-          type="text"
-          label="Description"
-        />
+        <BaseInput v-model="people.location" type="text" label="Location" />
 
         <h3>Where is your event?</h3>
 
         <label>Location</label>
 
-        <BaseInput v-model="people.location" type="text" label="Location" />
+        <BaseInput v-model="people.hometown" type="text" label="Location" />
 
-        <h3>Who is your organizer?</h3>
+        <h3>Doctor?</h3>
 
         <BaseSelect
-          :options="GStore.organizers"
-          v-model="event.organizer.id"
-          label="Select an Organizer"
+          :options="GStore.doctor"
+          v-model="people.doctor.id"
+          label="Select an Doctor"
         />
         <h3>The image of the Event</h3>
         <UploadImages @changed="handleImages" />
@@ -45,7 +41,7 @@
 </template>
 
 <script>
-import EventService from '@/services/EventService.js'
+import PeopleService from '@/services/PeopleService.js'
 import UploadImages from 'vue-upload-drop-images'
 export default {
   inject: ['GStore'],
@@ -55,12 +51,12 @@ export default {
   data() {
     return {
       people: {
-        category: '',
-        title: '',
-        description: '',
-        location: '',
-        organizer: { id: '', name: '' },
-        imageUrls: []
+        name: '',
+        surname: '',
+        age: '',
+        hometown: '',
+        doctor: { id: '', name: '' },
+        imgUrls: []
       },
       files: []
     }
@@ -69,11 +65,11 @@ export default {
     saveEvent() {
       Promise.all(
         this.files.map((file) => {
-          return EventService.uploadFile(file)
+          return PeopleService.uploadFile(file)
         })
       ).then((response) => {
-        this.event.imageUrls = response.map((r) => r.data)
-        EventService.saveEvent(this.event)
+        this.people.imgUrls = response.map((r) => r.data)
+        PeopleService.savePeople(this.people)
           .then((response) => {
             console.log(response)
             this.$router.push({

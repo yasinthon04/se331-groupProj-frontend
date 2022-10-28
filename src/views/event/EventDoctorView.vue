@@ -56,7 +56,7 @@ import ReviewList from '@/components/ReviewList.vue'
 import GStore from '@/store'
 export default {
   inject: ['GStore'],
-  props: ['people'],
+  props: ['id', 'people'],
   components: { ReviewForm, ReviewList },
   methods: {
     addReview(review) {

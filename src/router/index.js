@@ -10,8 +10,8 @@ import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import AddEvent from '@/views/EventForm.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
-import EventService from '@/services/EventService'
-import OrganizerService from '@/services/OrganizerService.js'
+import PeopleService from '@/services/PeopleService'
+import DoctorService from '@/services/DoctorService.js'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 const routes = [
@@ -31,7 +31,7 @@ const routes = [
     name: 'EventLayoutView',
     component: EventLayoutView,
     beforeEnter: (to) => {
-      return EventService.getEvent(to.params.id)
+      return PeopleService.getPeople(to.params.id)
         .then((response) => {
           GStore.people = response.data
         })
@@ -73,13 +73,13 @@ const routes = [
     name: 'AddEvent',
     component: AddEvent,
     beforeEnter: () => {
-      return OrganizerService.getOrganizers()
+      return DoctorService.getDoctor()
         .then((response) => {
-          GStore.organizers = response.data
+          GStore.doctor = response.data
         })
         .catch(() => {
-          GStore.organizers = null
-          console.log('cannot load organizer')
+          GStore.doctor = null
+          console.log('cannot load doctor')
         })
     }
   },

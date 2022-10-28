@@ -53,11 +53,13 @@
           >
         </div>
         <div class="box box3 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventDoctor' }"
-              >Doctor</router-link
-            ></span
-          >
+          <span v-if="isAdmin">
+            <span class="value"
+              ><router-link :to="{ name: 'EventDoctor' }"
+                >Doctor</router-link
+              ></span
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -67,7 +69,7 @@
 
 <script>
 export default {
-  props: ['people']
+  props: ['id', 'people']
 }
 </script>
 <style scoped>

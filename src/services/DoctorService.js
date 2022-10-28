@@ -9,7 +9,7 @@ const apiClient = axios.create({
   }
 })
 export default {
-  getOrganizers() {
-    return apiClient.get('/organizers')
+  getDoctor() {
+    return apiClient.get('/doctor')
   }
 }

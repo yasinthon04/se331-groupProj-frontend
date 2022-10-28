@@ -1,7 +1,7 @@
 <template>
   <router-link
     class="event-link"
-    :to="{ name: 'EventLayoutView', params: { id: people.id } }"
+    :to="{ name: 'EventDetails', params: { id: people.id } }"
   >
     <li class="card" aria-labelledby="event card">
       <div class="card__filter">

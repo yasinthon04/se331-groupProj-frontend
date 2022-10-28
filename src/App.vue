@@ -12,11 +12,11 @@
           <li>
             <router-link :to="{ name: 'about' }">About</router-link><br />
           </li>
-          <span v-if="isAdmin">
+          <!-- <span v-if="isAdmin">
             <li>
               <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
             </li>
-          </span>
+          </span> -->
         </ul>
         <div id="nav">
           <nav class="navbar navbar-expand">
@@ -104,7 +104,7 @@ export default {
   transition: 0.5s;
 }
 .menu:hover {
-  width: 15%;
+  width: 20%;
   z-index: 10;
 }
 .menu:hover ~ .container {
@@ -119,6 +119,7 @@ export default {
     z-index: 10;
   }
 }
+
 body {
   background: rgb(220, 42, 42);
   box-sizing: content-box;

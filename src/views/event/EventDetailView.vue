@@ -44,12 +44,15 @@
             ></span
           >
         </div>
+
         <div class="box box3 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventDoctor' }"
-              >Doctor</router-link
-            ></span
-          >
+          <span v-if="isAdmin">
+            <span class="value"
+              ><router-link :to="{ name: 'EventDoctor' }"
+                >Doctor</router-link
+              ></span
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -58,8 +61,24 @@
 </template>
 
 <script>
+// import AuthService from '@/services/AuthService.js'
 export default {
-  props: ['people']
+  props: ['id', 'people']
+  // inject: ['GStore'],
+  // computed: {
+  //   currentUser() {
+  //     return localStorage.getItem('user')
+  //   },
+  //   isAdmin() {
+  //     return AuthService.hasRoles('ROLE_ADMIN')
+  //   }
+  // },
+  // methods: {
+  //   logout() {
+  //     AuthService.logout()
+  //     this.$router.go()
+  //   }
+  // }
 }
 </script>
 <style scoped>
