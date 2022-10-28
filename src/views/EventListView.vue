@@ -183,7 +183,7 @@ h1 {
 }
 .btn {
   border-radius: 5px;
-  border: 2px solid #4fb2aa;
+  border: 2px solid #ffffff;
   background-image: linear-gradient(to left, #1897e1, #3022ad, #ff77c2);
   font-size: 16px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
