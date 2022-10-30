@@ -75,9 +75,6 @@ export default {
     isDoctor() {
       return AuthService.hasRoles('ROLE_DOCTOR')
     },
-    isDoctor() {
-      return AuthService.hasRoles('ROLE_DOCTOR')
-    },
     isUser() {
       return AuthService.hasRoles('ROLE_USER')
     },

@@ -5,4 +5,3 @@ export default {
     return apiClient.post('/vaccine/people/' + id, vaccine)
   }
 }
-
