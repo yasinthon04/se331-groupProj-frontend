@@ -55,9 +55,7 @@
                 ></span
               >
             </span>
-          </div>
 
-          <div class="box box3 hvr-underline-from-right">
             <span v-if="isDoctor">
               <span class="value"
                 ><router-link :to="{ name: 'addCommentOrVaccine' }"

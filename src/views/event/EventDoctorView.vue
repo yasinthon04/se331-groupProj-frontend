@@ -38,10 +38,10 @@
           >
         </div>
         <div class="box box3 hvr-underline-from-right">
-          <span v-if="isAdmin">
+          <span v-if="isDoctor">
             <span class="value"
-              ><router-link :to="{ name: 'EventDoctor' }"
-                >Doctor</router-link
+              ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                >Add Comment</router-link
               ></span
             >
           </span>
@@ -72,8 +72,8 @@ export default {
     currentUser() {
       return localStorage.getItem('user')
     },
-    isAdmin() {
-      return AuthService.hasRoles('ROLE_ADMIN')
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     },
     logout() {
       AuthService.logout()
