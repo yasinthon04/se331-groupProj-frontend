@@ -15,7 +15,7 @@
 
       <BaseSelect
         :options="GStore.vaccine"
-        v-model="people.vaccine.id"
+        v-model="vaccine.id"
         label="Select Vaccine"
       />
 
