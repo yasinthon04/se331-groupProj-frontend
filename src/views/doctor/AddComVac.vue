@@ -4,34 +4,34 @@
       <CommentForm @comment-submited="addComment" />
     </div>
     <div v-if="isAdmin" class="col">
+      {{ GStore.people }}
       <VaccineForm @comment-submited="addVaccine" />
     </div>
   </div>
 </template>
 <script>
 import CommentForm from '@/components/CommentForm.vue'
-import Comment from '@/services/CommentService.js'
-import GStore from '@/store'
 import CommentService from '@/services/CommentService.js'
-
+import VaccineForm from '@/components/VaccineForm.vue'
+import VaccineService from '@/services/VaccineService.js'
+import AuthService from '@/services/AuthService.js'
+import GStore from '@/store'
 export default {
-    inject: ['GStore'],
-    components: {
-        CommentForm
-    },
-  data() {
-    return {
-      newComment: null
-    }
+  inject: ['GStore'],
+  components: {
+    CommentForm,
+    VaccineForm
   },
   methods: {
     addComment(comment) {
-        console.log(comment)
-        GStore.comment.push(comment)
-        CommentService.addComment(GStore.people.id, vaccine)
+      console.log(comment)
+      GStore.comment.push(comment)
+      CommentService.addComment(GStore.people.id, comment)
     },
     addVaccine(vaccine) {
-      VaccineService.addVaccine(GStore.patient.id, vaccine)
+      console.log(GStore.people.id)
+      console.log(vaccine)
+      VaccineService.getVaccine(GStore.people.id, vaccine)
     }
   },
   computed: {

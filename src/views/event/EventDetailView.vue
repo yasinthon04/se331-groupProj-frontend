@@ -50,8 +50,18 @@
           <div class="box box3 hvr-underline-from-right">
             <span v-if="isAdmin">
               <span class="value"
-                ><router-link :to="{ name: 'EventDoctor' }"
-                  >Doctor</router-link
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add vaccine</router-link
+                ></span
+              >
+            </span>
+          </div>
+
+          <div class="box box3 hvr-underline-from-right">
+            <span v-if="isDoctor">
+              <span class="value"
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add comment</router-link
                 ></span
               >
             </span>
@@ -74,6 +84,9 @@ export default {
     },
     isAdmin() {
       return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   },
   methods: {

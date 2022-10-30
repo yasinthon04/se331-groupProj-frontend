@@ -12,10 +12,6 @@
           <li>
             <router-link :to="{ name: 'about' }">About</router-link><br />
           </li>
-          <li v-if="isAdmin">
-            <router-link :to="{ name: 'addVaccine' }">Add Vaccine</router-link
-            ><br />
-          </li>
           <!-- <span v-if="isAdmin">
             <li>
               <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
