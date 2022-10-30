@@ -3,5 +3,6 @@ export default reactive({
   flashMessage: '',
   event: null,
   organizers: null,
-  currentUser: JSON.parse(localStorage.getItem(null))
+  currentUser: JSON.parse(localStorage.getItem(null)),
+  vaccine: null
 })

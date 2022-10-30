@@ -18,6 +18,9 @@ import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
 import EventUserView from '@/views/EventUserView.vue'
 import DoctorListView from '@/views/DoctorListView.vue'
+import AddComVac from '@/views/doctor/AddComVac.vue'
+import CommentList from '@/components/CommentList.vue'
+
 const routes = [
   {
     path: '/',
@@ -58,6 +61,16 @@ const routes = [
     name: 'DoctorListView',
     component: DoctorListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
+  },
+  {
+    path: '/addComVac',
+    name: 'addCommentOrVaccine',
+    component: AddComVac
+  },
+  {
+    path: '/commentList',
+    name: 'commentList',
+    component: CommentList
   },
   {
     path: '/people/:id',

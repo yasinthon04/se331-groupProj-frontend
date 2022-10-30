@@ -50,8 +50,24 @@
           <div class="box box3 hvr-underline-from-right">
             <span v-if="isAdmin">
               <span class="value"
-                ><router-link :to="{ name: 'EventDoctor' }"
-                  >Doctor</router-link
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add vaccine</router-link
+                ></span
+              >
+            </span>
+
+            <span v-if="isDoctor">
+              <span class="value"
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add comment</router-link
+                ></span
+              >
+            </span>
+
+            <span v-if="isUser">
+              <span class="value"
+                ><router-link :to="{ name: 'commentList' }"
+                  >View Comment</router-link
                 ></span
               >
             </span>
