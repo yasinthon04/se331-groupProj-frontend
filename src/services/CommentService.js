@@ -1,15 +1,7 @@
-import axios from 'axios'
+import apiClient from '@/services/AxiosClient.js'
 
-const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_BACKEND_URL,
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
 export default {
-  getDoctor() {
-    return apiClient.get('comment')
+  addComment(id, comment) {
+    return apiClient.post('/comment/people/' + id, comment)
   }
 }

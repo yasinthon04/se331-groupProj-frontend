@@ -53,8 +53,8 @@
 </template>
 
 <script>
-import ReviewForm from '@/components/ReviewForm.vue'
-import ReviewList from '@/components/ReviewList.vue'
+import ReviewForm from '@/components/CommentForm.vue'
+import ReviewList from '@/components/CommentList.vue'
 import AuthService from '@/services/AuthService.js'
 import GStore from '@/store'
 export default {

@@ -1,15 +1,16 @@
-import axios from 'axios'
+import apiClient from '@/services/AxiosClient.js'
 
-const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_BACKEND_URL,
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
 export default {
-  getDoctor() {
-    return apiClient.get('/doctor')
+  getDoctors(page, perPage) {
+    return apiClient.get('/doctor?_page=' + page + '&_limit=' + perPage)
+  },
+  getDoctor(id) {
+    return apiClient.get('/doctors/' + id)
+  },
+  getAllDoctor() {
+    return apiClient.get('/doctors')
+  },
+  getDoctorPeople(id) {
+    return apiClient.get('/doctors/' + id + '/people')
   }
 }

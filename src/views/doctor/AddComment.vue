@@ -1,0 +1,46 @@
+<template>
+  <div class="row">
+    <div v-if="isDoctor" class="col">
+      <CommentForm @comment-submited="addComment" />
+    </div>
+    <div v-if="isAdmin" class="col">
+      <VaccineForm @comment-submited="addVaccine" />
+    </div>
+  </div>
+</template>
+<script>
+import CommentForm from '@/components/CommentForm.vue'
+import Comment from '@/services/CommentService.js'
+import GStore from '@/store'
+import CommentService from '@/services/CommentService.js'
+
+export default {
+    inject: ['GStore'],
+    components: {
+        CommentForm
+    },
+  data() {
+    return {
+      newComment: null
+    }
+  },
+  methods: {
+    addComment(comment) {
+        console.log(comment)
+        GStore.comment.push(comment)
+        CommentService.addComment(GStore.people.id, vaccine)
+    },
+    addVaccine(vaccine) {
+      VaccineService.addVaccine(GStore.patient.id, vaccine)
+    }
+  },
+  computed: {
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
+    }
+  }
+}
+</script>
