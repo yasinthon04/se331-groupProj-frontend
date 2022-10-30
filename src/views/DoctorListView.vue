@@ -1,5 +1,4 @@
 <template>
-  <div>{{ doctor }}</div>
   <div class="name">Doctor List</div>
   <div class="events">
     <div class="row">

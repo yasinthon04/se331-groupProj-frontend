@@ -30,11 +30,6 @@
             ></path>
           </svg>
         </div>
-
-        <!-- <div class="actions">
-          <button class="btn hvr-underline-from-center">Follow</button>
-          <button class="btn hvr-underline-from-center">Message</button>
-        </div> -->
       </div>
 
       <div class="stats">

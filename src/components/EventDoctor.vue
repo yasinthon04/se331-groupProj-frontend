@@ -11,6 +11,10 @@
     <div class="card__container">
       <div class="name">{{ doctor.name }}</div>
     </div>
+    <div class="actions">
+      <button class="btn hvr-underline-from-center">Set to user</button>
+      <button class="btn hvr-underline-from-center">Set to people</button>
+    </div>
   </li>
   <!-- </span> -->
   <!-- </router-link> -->
@@ -189,6 +193,140 @@ export default {
   background-size: 150% 150%;
   transition: all 0.4s ease;
   z-index: 1;
+}
+
+.profile .actions .btn {
+  display: block;
+  width: 80px;
+  height: 30px;
+  margin: 0 auto 10px auto;
+  background: none;
+  border: 2px solid transparent;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  color: #643a7a;
+}
+
+.btn,
+.parameter {
+  font-family: 'Josefin sans';
+}
+
+.profile .actions .btn:hover {
+  cursor: pointer;
+}
+
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+.hvr-underline-from-center:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #643a7a;
+  height: 1px;
+  transition-property: left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-underline-from-center:hover:before,
+.hvr-underline-from-center:focus:before,
+.hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
+
+.stats .box {
+  box-sizing: border-box;
+  width: 200px;
+  height: 99px;
+  background: #95c4ff;
+  text-align: center;
+  padding-top: 28px;
+  transition: all 0.4s ease-in-out;
+  color: #643a7a;
+}
+
+.box1 {
+  animation: bg 0.5s ease-in-out;
+}
+
+.box2 {
+  animation: bg 0.8s ease-in-out;
+}
+
+.box3 {
+  animation: bg 1.1s ease-in-out;
+}
+
+@keyframes bg {
+  0% {
+    transform: translate(8rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+.stats .box:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.hvr-underline-from-right {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+.hvr-underline-from-right:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  height: 99px;
+  transition-property: left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-underline-from-right:hover:before,
+.hvr-underline-from-right:focus:before,
+.hvr-underline-from-right:active:before {
+  left: 0;
+}
+
+.stats .box:nth-child(2) {
+  margin: 1px 0;
+}
+
+.stats span {
+  display: block;
+}
+
+.stats .value {
+  font-size: 1.8rem;
+  font-family: lobster;
+}
+
+.stats .parameter {
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 @-webkit-keyframes gradient {
