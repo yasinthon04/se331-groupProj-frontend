@@ -1,8 +1,13 @@
 <template>
-  <div class="name">User List</div>
+  <div>{{ doctor }}</div>
+  <div class="name">Doctor List</div>
   <div class="events">
     <div class="row">
-      <EventUser v-for="user in user" :key="user.id" :user="user"></EventUser>
+      <EventDoctor
+        v-for="doctor in doctor"
+        :key="doctor.id"
+        :doctor="doctor"
+      ></EventDoctor>
     </div>
 
     <span v-if="isAdmin">
@@ -10,7 +15,7 @@
         <div class="pagination a">
           <router-link
             id="page-prev"
-            :to="{ name: 'EventUserList', query: { page: page - 1 } }"
+            :to="{ name: 'DoctorListView', query: { page: page - 1 } }"
             rel="prev"
             v-if="page != 1"
           >
@@ -20,7 +25,7 @@
         <div class="pagination a">
           <router-link
             id="page-next"
-            :to="{ name: 'EventUserList', query: { page: page + 1 } }"
+            :to="{ name: 'DoctorListView', query: { page: page + 1 } }"
             rel="next"
             v-if="hasNextPage"
           >
@@ -34,12 +39,12 @@
 
 <script>
 // @ is an alias to /src
-import EventUser from '@/components/EventUser.vue'
-import UserService from '@/services/UserService.js'
+import EventDoctor from '@/components/EventDoctor.vue'
+import DoctorService from '@/services/DoctorService.js'
 import AuthService from '@/services/AuthService.js'
 export default {
   inject: ['GStore'],
-  name: 'EventUserView',
+  name: 'EventDoctorView',
   props: {
     page: {
       type: Number,
@@ -47,22 +52,22 @@ export default {
     }
   },
   components: {
-    EventUser
+    EventDoctor
   },
   data() {
     return {
-      user: null,
-      totalUsers: 0,
+      doctor: null,
+      totalDoctors: 0,
       keyword: null
     }
   },
   // eslint-disable-next-line no-unused-vars
   beforeRouteEnter(routeTo, routeFrom, next) {
-    UserService.getUsers(3, parseInt(routeTo.query.page) || 1)
+    DoctorService.getDoctors(3, parseInt(routeTo.query.page) || 1)
       .then((response) => {
         next((comp) => {
-          comp.user = response.data
-          comp.totalUsers = response.headers['x-total-count']
+          comp.doctor = response.data
+          comp.totalDoctors = response.headers['x-total-count']
         })
       })
       .catch(() => {
@@ -72,9 +77,12 @@ export default {
   beforeRouteUpdate(routeTo) {
     var queryFunction
     if (this.keyword == null || this.keyword === '') {
-      queryFunction = UserService.getUsers(3, parseInt(routeTo.query.page) || 1)
+      queryFunction = DoctorService.getDoctors(
+        3,
+        parseInt(routeTo.query.page) || 1
+      )
     } else {
-      queryFunction = UserService.getUserByKeyword(
+      queryFunction = DoctorService.getDoctorByKeyword(
         this.keyword,
         3,
         parseInt(routeTo.query.page) || 1
@@ -83,8 +91,8 @@ export default {
 
     queryFunction
       .then((response) => {
-        this.user = response.data // <---
-        this.totalUsers = response.headers['x-total-count'] // <---
+        this.doctor = response.data // <---
+        this.totalDoctors = response.headers['x-total-count'] // <---
       })
       .catch(() => {
         return { name: 'NetworkError' } // <---
@@ -94,17 +102,17 @@ export default {
     updateKeyword() {
       var queryFunction
       if (this.keyword === '') {
-        queryFunction = UserService.getUsers(3, 1)
+        queryFunction = DoctorService.getDoctors(3, 1)
       } else {
-        queryFunction = UserService.getUserByKeyword(this.keyword, 3, 1)
+        queryFunction = DoctorService.getDoctorByKeyword(this.keyword, 3, 1)
       }
 
       queryFunction
         .then((response) => {
-          this.user = response.data
-          console.log(this.user)
-          this.totalUsers = response.headers['x-total-count']
-          console.log(this.totalUsers)
+          this.doctor = response.data
+          console.log(this.doctor)
+          this.totalDoctors = response.headers['x-total-count']
+          console.log(this.totalDoctors)
         })
         .catch(() => {
           return { name: 'NetworkError' }
@@ -114,7 +122,7 @@ export default {
 
   computed: {
     hasNextPage() {
-      let totalPages = Math.ceil(this.totalUsers / 3)
+      let totalPages = Math.ceil(this.totalDoctors / 3)
       return this.page < totalPages
     },
     currentUser() {

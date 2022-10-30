@@ -18,6 +18,11 @@
               User list</router-link
             >
           </li>
+          <li>
+            <router-link :to="{ name: 'DoctorListView' }">
+              Doctor list</router-link
+            >
+          </li>
           <!-- </span> -->
         </ul>
         <div id="nav">

@@ -1,15 +1,27 @@
-import axios from 'axios'
+import apiClient from '@/services/AxiosClient.js'
 
-const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_BACKEND_URL,
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
 export default {
-  getDoctor() {
-    return apiClient.get('/doctor')
+  getDoctors(perPage, page) {
+    return apiClient.get('/doctor?_limit=' + perPage + '&_page=' + page)
+  },
+  getDoctor(id) {
+    return apiClient.get('/doctor/' + id)
+  },
+  saveDoctor(doctors) {
+    return apiClient.post('/doctor', doctors)
+  },
+  getDoctorByKeyword(keyword, perPage, page) {
+    return apiClient.get(
+      'doctor?_limit=' + perPage + '&_page=' + page + '&title=' + keyword
+    )
+  },
+  uploadFile(file) {
+    let formData = new FormData()
+    formData.append('file', file)
+    return apiClient.post('/uploadFile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   }
 }

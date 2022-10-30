@@ -1,15 +1,15 @@
 <template>
   <!-- <router-link
     class="event-link"
-    :to="{ name: 'UserDetailView', params: { id: user.id } }"
+    :to="{ name: 'DoctorDetailView', params: { id: doctor.id } }"
   > -->
   <!-- <span v-if="isAdmin"> -->
   <li class="card" aria-labelledby="event card">
     <div class="card__filter">
-      <img class="card__photo" :src="user.image" />
+      <img class="card__photo" :src="doctor.image" />
     </div>
     <div class="card__container">
-      <div class="name">{{ user.firstname }}</div>
+      <div class="name">{{ doctor.name }}</div>
     </div>
   </li>
   <!-- </span> -->
@@ -18,9 +18,9 @@
 <script>
 import AuthService from '@/services/AuthService.js'
 export default {
-  name: 'EventUser',
+  name: 'EventDoctor',
   props: {
-    user: {
+    doctor: {
       type: Object,
       required: true
     }

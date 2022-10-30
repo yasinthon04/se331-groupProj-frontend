@@ -17,7 +17,7 @@ import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
 import EventUserView from '@/views/EventUserView.vue'
-import UserDetailView from '@/views/event/UserDetailView.vue'
+import DoctorListView from '@/views/DoctorListView.vue'
 const routes = [
   {
     path: '/',
@@ -43,21 +43,21 @@ const routes = [
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
-    path: '/user',
-    name: 'EventUserList',
-    component: EventUserView,
-    props: (route) => ({ page: parseInt(route.query.page) || 1 })
-  },
-  {
     path: '/about',
     name: 'about',
     component: AboutView
   },
   {
-    path: '/userDetail',
-    name: 'UserDetailView',
-    component: UserDetailView,
-    props: true
+    path: '/userList',
+    name: 'EventUserList',
+    component: EventUserView,
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
+  },
+  {
+    path: '/doctorList',
+    name: 'DoctorListView',
+    component: DoctorListView,
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
     path: '/people/:id',
@@ -83,7 +83,7 @@ const routes = [
     props: true,
     children: [
       {
-        path: '',
+        path: 'details',
         name: 'EventDetails',
         component: EventDetailView,
         props: true
