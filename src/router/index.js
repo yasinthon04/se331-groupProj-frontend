@@ -14,6 +14,7 @@ import PeopleService from '@/services/PeopleService'
 import DoctorService from '@/services/DoctorService.js'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
+import AddVaccine from '@/views/AddVaccineView.vue'
 const routes = [
   {
     path: '/',
@@ -25,6 +26,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: AboutView
+  },
+  {
+    path: '/addVaccine',
+    name: 'addVaccine',
+    component: AddVaccine
   },
   {
     path: '/people/:id',
