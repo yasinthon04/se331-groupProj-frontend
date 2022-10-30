@@ -18,12 +18,13 @@
 
 <script>
 import GStore from '@/store'
+
 export default {
   inject: ['GStore'],
   data() {
     return {
       patient_id: '',
-      name: null,
+      name: '',
       suggestion: '',
       date: ''
     }
@@ -34,21 +35,25 @@ export default {
         alert('This Form is incomplete. Please fill out evert field.')
         return
       }
-      let productReview = {
-        name: this.name,
-        suggestion: this.suggestion,
-        date: this.date,
-        patient_id: GStore.people.id
-      }
-      this.$emit('review-submited', productReview)
-      this.patient_id = ''
-      this.name = ''
-      this.suggestion = ''
-      this.date = ''
       this.GStore.flashMessage = "Doctor's suggestion successfully! "
       setTimeout(() => {
         this.GStore.flashMessage = ''
       }, 3000)
+      let doctorComment = {
+        patient_id: GStore.patient.id,
+        patient_name: GStore.patient.name,
+        patient_surname: GStore.patient.surname,
+        name: this.name,
+        comment: this.comment,
+        date: this.date
+      }
+      this.$emit('comment-submited', doctorComment)
+      this.patient_id = ''
+      this.patient_name = ''
+      this.patient_surname = ''
+      this.name = ''
+      this.comment = ''
+      this.date = null
     }
   }
 }
@@ -85,8 +90,6 @@ body {
   box-shadow: 2px 20px -12px rgba(0, 0, 0, 0.57);
   margin-left: 40px;
   border: 2px solid #ffffff;
-}
-.review-container li {
 }
 .review-form .button {
   display: block;
