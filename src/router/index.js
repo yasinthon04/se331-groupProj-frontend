@@ -12,9 +12,12 @@ import NProgress from 'nprogress'
 import GStore from '@/store'
 import PeopleService from '@/services/PeopleService'
 import DoctorService from '@/services/DoctorService.js'
+// import UserService from '@/services/UserService'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
+import EventUserView from '@/views/EventUserView.vue'
+import UserDetailView from '@/views/event/UserDetailView.vue'
 const routes = [
   {
     path: '/',
@@ -40,15 +43,28 @@ const routes = [
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
+    path: '/user',
+    name: 'EventUserList',
+    component: EventUserView,
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
+  },
+  {
     path: '/about',
     name: 'about',
     component: AboutView
+  },
+  {
+    path: '/userDetail',
+    name: 'UserDetailView',
+    component: UserDetailView,
+    props: true
   },
   {
     path: '/people/:id',
     name: 'EventLayoutView',
     component: EventLayoutView,
     beforeEnter: (to) => {
+      console.log('people')
       return PeopleService.getPeople(to.params.id)
         .then((response) => {
           GStore.people = response.data

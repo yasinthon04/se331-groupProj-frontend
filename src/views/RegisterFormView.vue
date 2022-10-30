@@ -7,66 +7,68 @@
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
       />
-      <Form @submit="handleRegiter" :validation-schema="schema">
-        <div v-if="!successful">
-          <div class="form-input">
-            <label for="username">Username</label>
-            <Field name="username" type="text" class="in" />
-            <ErrorMessage name="username" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="password">Password</label>
-            <Field name="password" type="password" class="in" />
-            <ErrorMessage name="password" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="firstname">Firstname</label>
-            <Field name="firstname" type="firstname" class="in" />
-            <ErrorMessage name="firstname" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="lastname">Lastname</label>
-            <Field name="lastname" type="lastname" class="in" />
-            <ErrorMessage name="lastname" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="email">Email</label>
-            <Field name="email" type="email" class="in" />
-            <ErrorMessage name="email" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="age">Age</label>
-            <Field name="age" type="age" class="in" />
-            <ErrorMessage name="age" class="error-feedback" />
-          </div>
-          <div class="form-input">
-            <label for="hometown">Hometown</label>
-            <Field name="hometown" type="hometown" class="in" />
-            <ErrorMessage name="hometown" class="error-feedback" />
-          </div>
-          <label for="image">Upload your image.</label>
-          <UploadImages @changed="handleImages" />
+      <form @submit.prevent="saveEvent">
+        <Form @submit="handleRegiter" :validation-schema="schema">
+          <div v-if="!successful">
+            <div class="form-input">
+              <label for="username">Username</label>
+              <Field name="username" type="text" class="in" />
+              <ErrorMessage name="username" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="password">Password</label>
+              <Field name="password" type="password" class="in" />
+              <ErrorMessage name="password" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="firstname">Firstname</label>
+              <Field name="firstname" type="firstname" class="in" />
+              <ErrorMessage name="firstname" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="lastname">Lastname</label>
+              <Field name="lastname" type="lastname" class="in" />
+              <ErrorMessage name="lastname" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="email">Email</label>
+              <Field name="email" type="email" class="in" />
+              <ErrorMessage name="email" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="age">Age</label>
+              <Field name="age" type="age" class="in" />
+              <ErrorMessage name="age" class="error-feedback" />
+            </div>
+            <div class="form-input">
+              <label for="hometown">Hometown</label>
+              <Field name="hometown" type="hometown" class="in" />
+              <ErrorMessage name="hometown" class="error-feedback" />
+            </div>
+            <label for="image">Upload your image.</label>
+            <UploadImages @changed="handleImages" />
 
-          <div class="form-input">
-            <button class="button" :disabled="loading">
-              <span
-                v-show="loading"
-                class="spinner-border spinner-border-sm"
-              ></span>
-              <span>Sign Up</span>
-            </button>
+            <div class="form-input">
+              <button class="button" :disabled="loading" type="submit">
+                <span
+                  v-show="loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                <span>Sign Up</span>
+              </button>
+            </div>
+          </div>
+        </Form>
+        <div class="form-group">
+          <div
+            v-if="message"
+            class="alert"
+            :class="successful ? 'alert-success' : 'alert-danger'"
+          >
+            {{ message }}
           </div>
         </div>
-      </Form>
-      <div class="form-group">
-        <div
-          v-if="message"
-          class="alert"
-          :class="successful ? 'alert-success' : 'alert-danger'"
-        >
-          {{ message }}
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -108,12 +110,21 @@ export default {
       successful: false,
       loading: false,
       message: '',
-      schema
+      schema,
+      people: {
+        firstname: '',
+        lastname: '',
+        age: '',
+        hometown: '',
+        // doctor: { id: '', name: '' },
+        imgUrls: []
+      },
+      files: []
     }
   },
   mounted() {
     if (this.GStore.currentUser) {
-      this.$router.push('/event')
+      this.$router.push('EventList')
     }
   },
   methods: {
@@ -137,6 +148,31 @@ export default {
         this.message = ''
         this.successful = false
         this.loading = true
+      })
+    },
+    saveEvent() {
+      Promise.all(
+        this.files.map((file) => {
+          return PeopleService.uploadFile(file)
+        })
+      ).then((response) => {
+        this.people.imgUrls = response.map((r) => r.data)
+        PeopleService.savePeople(this.people)
+          .then((response) => {
+            console.log(response)
+            this.$router.push({
+              name: 'EventDetails',
+              params: { id: response.data.id }
+            })
+            this.GStore.flashMessage =
+              'You are successfully add a new event for ' + response.data.title
+            setTimeout(() => {
+              this.GStore.flashMessage = ''
+            }, 3000)
+          })
+          .catch(() => {
+            this.$router.push('NetworkError')
+          })
       })
     },
     handleImages(files) {

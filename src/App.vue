@@ -12,11 +12,13 @@
           <li>
             <router-link :to="{ name: 'about' }">About</router-link><br />
           </li>
-          <span v-if="isAdmin">
-            <li>
-              <router-link :to="{ name: 'AddEvent' }"> New Event</router-link>
-            </li>
-          </span>
+          <!-- <span v-if="isAdmin"> -->
+          <li>
+            <router-link :to="{ name: 'EventUserList' }">
+              User list</router-link
+            >
+          </li>
+          <!-- </span> -->
         </ul>
         <div id="nav">
           <nav class="navbar navbar-expand">

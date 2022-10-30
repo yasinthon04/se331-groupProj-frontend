@@ -1,19 +1,19 @@
-<template>
+<!-- <template>
   <div>
     <h1>Add Vaccine</h1>
     <form @submit.prevent="addVaccine">
-        <h3>Name:</h3>
-        <BaseInput v-model="people.name" type="text" label="Name" />
+      <h3>Name:</h3>
+      <BaseInput v-model="people.name" type="text" label="Name" />
 
-        <h3>Surname:</h3>
-        <BaseInput v-model="people.surname" type="text" label="Surname" />
+      <h3>Surname:</h3>
+      <BaseInput v-model="people.surname" type="text" label="Surname" />
 
-        <h3>Date:</h3>
-        <BaseInput v-model="people.date" type="text" label="Date" />
-        
-        <h3>Add Vaccine: </h3>
+      <h3>Date:</h3>
+      <BaseInput v-model="people.date" type="text" label="Date" />
 
-        <BaseSelect
+      <h3>Add Vaccine:</h3>
+
+      <BaseSelect
         :options="GStore.vaccine"
         v-model="people.vaccine.id"
         label="Select Vaccine"
@@ -21,27 +21,26 @@
 
       <button type="submit">Submit</button>
     </form>
-
   </div>
 </template>
 
 <script>
 import VaccineService from '@/services/VaccineService'
-import PeopleService from '@/services/PeopleService' 
+import PeopleService from '@/services/PeopleService'
 
 export default {
-    inject: ['GStore'],
-    data() {
-        return {
-            people: {
-                name: '',
-                surname: '',
-                date: '',
-                vaccine: ''             
-            }
-        }
-    },
-    methods: {
+  inject: ['GStore'],
+  data() {
+    return {
+      people: {
+        name: '',
+        surname: '',
+        date: '',
+        vaccine: ''
+      }
+    }
+  },
+  methods: {
     addVaccine() {
       PeopleService.addVaccine(this.people.vaccine)
         .then((response) => {
@@ -62,4 +61,4 @@ export default {
     }
   }
 }
-</script>
+</script> -->
