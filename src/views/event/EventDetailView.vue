@@ -63,6 +63,14 @@
                 ></span
               >
             </span>
+
+            <span v-if="isUser">
+              <span class="value"
+                ><router-link :to="{ name: 'commentList' }"
+                  >View Comment</router-link
+                ></span
+              >
+            </span>
           </div>
         </div>
       </div>
@@ -85,6 +93,9 @@ export default {
     },
     isDoctor() {
       return AuthService.hasRoles('ROLE_DOCTOR')
+    },
+    isUser() {
+      return AuthService.hasRoles('ROLE_PATIENT')
     }
   },
   methods: {

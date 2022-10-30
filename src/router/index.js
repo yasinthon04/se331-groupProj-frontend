@@ -15,6 +15,7 @@ import DoctorService from '@/services/DoctorService.js'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import AddComVac from '@/views/doctor/AddComVac.vue'
+import CommentList from '@/components/CommentList.vue'
 const routes = [
   {
     path: '/',
@@ -31,6 +32,11 @@ const routes = [
     path: '/addComVac',
     name: 'addCommentOrVaccine',
     component: AddComVac
+  },
+  {
+    path: '/commentList',
+    name: 'commentList',
+    component: CommentList
   },
   {
     path: '/people/:id',

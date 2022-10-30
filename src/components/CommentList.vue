@@ -31,7 +31,6 @@ export default {
   border-radius: 10px;
   border: 2px solid #000000;
   width: 425px;
-  margin-top: 20px;
   padding: 3%;
 }
 li {
