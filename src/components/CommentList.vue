@@ -3,8 +3,12 @@
     <div id="doctorSuggest-card">
       <h3>Doctor Comment:</h3>
       <ul>
-        <li v-for="(review, index) in reviews" :key="index">
-          Dortor's Suggestion: "{{ review.suggestion }}"
+        <li v-for="(comment, index) in comments" :key="index">
+          Date: {{ comment.date }}
+          <br />
+          Doctor's Name: {{ comment.name }}
+          <br />
+          Dortor's Suggestion: "{{ comment.suggestion }}"
           <br />
         </li>
       </ul>
@@ -15,7 +19,7 @@
 <script>
 export default {
   inject: ['GStore'],
-  props: ['reviews']
+  props: ['comment']
 }
 </script>
 

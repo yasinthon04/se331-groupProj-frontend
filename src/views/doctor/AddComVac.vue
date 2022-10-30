@@ -25,8 +25,8 @@ export default {
   methods: {
     addComment(comment) {
       console.log(comment)
-      GStore.comment.push(comment)
-      CommentService.addComment(GStore.people.id, comment)
+      // GStore.comment.push(comment)
+      CommentService.addCommentToUser(GStore.people.id, comment)
     },
     addVaccine(vaccine) {
       console.log(GStore.people.id)

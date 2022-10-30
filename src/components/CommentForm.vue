@@ -2,8 +2,8 @@
   <div>
     <form class="review-form" @submit.prevent="onSubmit">
       <h3>Doctor Comment</h3>
-      <label for="suggestion">Comment:</label>
-      <textarea id="suggestion" v-model="suggestion"></textarea>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" v-model="comment"></textarea>
       <input class="button" type="submit" value="Submit" />
     </form>
   </div>
@@ -17,14 +17,12 @@ export default {
   data() {
     return {
       patient_id: '',
-      name: '',
-      suggestion: '',
-      date: ''
+      comment: '',
     }
   },
   methods: {
     onSubmit() {
-      if (this.suggestion === '') {
+      if (this.comment === '') {
         alert('This Form is incomplete. Please fill out evert field.')
         return
       }
@@ -33,20 +31,12 @@ export default {
         this.GStore.flashMessage = ''
       }, 3000)
       let doctorComment = {
-        patient_id: GStore.patient.id,
-        patient_name: GStore.patient.name,
-        patient_surname: GStore.patient.surname,
-        name: this.name,
+        patient_id: GStore.people.id,
         comment: this.comment,
-        date: this.date
       }
       this.$emit('comment-submited', doctorComment)
       this.patient_id = ''
-      this.patient_name = ''
-      this.patient_surname = ''
-      this.name = ''
       this.comment = ''
-      this.date = null
     }
   }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import router from '@/router'
+///import router from '@/router'
 
 const apiClient = axios.create({
   baseURL: process.env.VUE_APP_BACKEND_URL,
@@ -9,17 +9,17 @@ const apiClient = axios.create({
     'Content-Type': 'application/json'
   }
 })
-apiClient.interceptors.response.use(
-  function (response) {
-    return response
-  },
-  function (error) {
-    if (error.response.status) {
-      router.push('/login')
-      return Promise.resolve(error.response)
-    } else {
-      return Promise.reject(error)
-    }
-  }
-)
+// apiClient.interceptors.response.use(
+//   function (response) {
+//     return response
+//   },
+//   function (error) {
+//     if (error.response.status) {
+//       router.push('/login')
+//       return Promise.resolve(error.response)
+//     } else {
+//       return Promise.reject(error)
+//     }
+//   }
+// )
 export default apiClient
