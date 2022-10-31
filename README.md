@@ -10,6 +10,7 @@ Link for frontend
 http://3.224.152.39:8001
 
 Link for backend
+
 http://3.224.152.39:8999
 
 *** We do the deployment VM on the AWS ***
