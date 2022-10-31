@@ -31,19 +31,9 @@
           </div>
         </div>
 
-        <div class="stats">
-          <!-- <router-link
-            class="event-link"
-            :to="{ name: 'ChangeRoleToDoctor', params: { id: GStore.user.id } }"
-          > -->
-            <button class="btn hvr-underline-from-center" @click="change">Set to doctor</button>
-          <!-- </router-link>
-          <router-link
-            class="event-link"
-            :to="{ name: 'ChangeRoleToPeople', params: { id: GStore.user.id } }"
-          > -->
-            <button class="btn hvr-underline-from-center" @click="change">Set to people</button>
-          <!-- </router-link> -->
+        <div class="stats">   
+            <button class="btn hvr-underline-from-center" @click="changeToDoctor">Set to doctor</button>
+            <button class="btn hvr-underline-from-center" @click="changeToPeople">Set to people</button>
         </div>
       </div>
     </div>
@@ -83,7 +73,7 @@ export default {
     }
   },
   methods: {
-    change() {
+    changeToPeople() {
       console.log(this.userData)
       AuthService.changeRoleToPeople(this.userData)
         .then(() => {
@@ -91,8 +81,9 @@ export default {
         })
         .catch(() => {
           console.log('FAIL')
-        }),
-
+        })
+    },
+    changeToDoctor() {
       AuthService.changeRoleToDoctor(this.userData)
       .then(() => {
          this.$router.push({ path: '/doctorList' })

@@ -76,7 +76,6 @@
       </div>
     </div>
   </div>
-  <img v-for="url in people.imageUrls" :key="url" :src="url" />
 </template>
 
 <script>

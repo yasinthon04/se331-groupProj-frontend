@@ -30,9 +30,9 @@
           </div>
         </div>
 
-        <div class="stats">
+        <!-- <div class="stats">
               <button class="btn hvr-underline-from-center" @click="change">Set to people</button>
-          </div>
+          </div> -->
       </div>
     </div>
   </div>

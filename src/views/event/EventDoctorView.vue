@@ -23,33 +23,49 @@
       </div>
 
       <div class="stats">
-        <div class="box box1 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventDetails' }"
-              >Details</router-link
-            ></span
-          >
-        </div>
-        <div class="box box2 hvr-underline-from-right">
-          <span class="value"
-            ><router-link :to="{ name: 'EventVaccine' }"
-              >Vaccine Status</router-link
-            ></span
-          >
-        </div>
-        <div class="box box3 hvr-underline-from-right">
-          <span v-if="isDoctor">
+          <div class="box box1 hvr-underline-from-right">
             <span class="value"
-              ><router-link :to="{ name: 'addCommentOrVaccine' }"
-                >Add Comment</router-link
+              ><router-link :to="{ name: 'EventDetails' }"
+                >Details</router-link
               ></span
             >
-          </span>
+          </div>
+          <div class="box box2 hvr-underline-from-right">
+            <span class="value"
+              ><router-link :to="{ name: 'EventVaccine' }"
+                >Vaccine Status</router-link
+              ></span
+            >
+          </div>
+
+          <div class="box box3 hvr-underline-from-right">
+            <span v-if="isAdmin">
+              <span class="value"
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add vaccine</router-link
+                ></span
+              >
+            </span>
+
+            <span v-if="isDoctor">
+              <span class="value"
+                ><router-link :to="{ name: 'addCommentOrVaccine' }"
+                  >Add comment</router-link
+                ></span
+              >
+            </span>
+
+            <span v-if="isUser">
+              <span class="value"
+                ><router-link :to="{ name: 'commentList' }"
+                  >View Comment</router-link
+                ></span
+              >
+            </span>
+          </div>
         </div>
-      </div>
     </div>
   </div>
-  <img v-for="url in people.imageUrls" :key="url" :src="url" />
 </template>
 
 <script>

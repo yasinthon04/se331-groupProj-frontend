@@ -56,7 +56,7 @@
           <span v-if="isAdmin">
             <span class="value"
               ><router-link :to="{ name: 'EventDoctor' }"
-                >Doctor</router-link
+                >Comment</router-link
               ></span
             >
           </span>
@@ -64,7 +64,6 @@
       </div>
     </div>
   </div>
-  <img v-for="url in people.imageUrls" :key="url" :src="url" />
 </template>
 
 <script>
