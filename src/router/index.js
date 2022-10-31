@@ -12,6 +12,7 @@ import NProgress from 'nprogress'
 import GStore from '@/store'
 import PeopleService from '@/services/PeopleService'
 import DoctorService from '@/services/DoctorService.js'
+import UserService from '@/services/UserService'
 import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
@@ -19,6 +20,10 @@ import EventUserView from '@/views/EventUserView.vue'
 import DoctorListView from '@/views/DoctorListView.vue'
 import AddComVac from '@/views/doctor/AddComVac.vue'
 import CommentList from '@/components/CommentList.vue'
+import ChangeRoleToDoctor from '@/components/EventUser.vue'
+import ChangeRoleToPeople from '@/components/EventUser.vue'
+import UserLayout from '@/views/event/UserLayout.vue'
+import DoctorLayout from '@/views/event/DoctorLayout.vue'
 
 const routes = [
   {
@@ -53,10 +58,93 @@ const routes = [
     component: AboutView
   },
   {
+    path: '/userLayout',
+    name: 'UserLayout',
+    component: UserLayout,
+    beforeEnter: (to) => {
+      return UserService.getUser(to.params.id)
+        .then((response) => {
+          GStore.user = response.data
+        })
+        .catch((error) => {
+          if (error.response && error.response.status == 404) {
+            return {
+              name: '404Resource'
+            }
+          } else {
+            return { name: 'NetWorkError' }
+          }
+        })
+      },
+    children: [
+      {
+        path: 'changeRoleToPeople/:id',
+        name: 'ChangeRoleToPeople',
+        component: ChangeRoleToPeople,
+        props: true,
+        beforeEnter: () => {
+          return DoctorService.getAllDoctor()
+            .then((response) => {
+              console.log(GStore.doctor)
+              GStore.doctor = response.data
+            })
+            .catch(() => {
+              GStore.doctor = null
+              console.log('cannot load doctor')
+            })
+        }
+      },
+      {
+        path: 'changeRoleToDoctor/:id',
+        name: 'ChangeRoleToDoctor',
+        component: ChangeRoleToDoctor,
+        props: true
+      }
+    ]
+  },
+  {
+    path: '/doctorLayout',
+    name: 'DoctorLayout',
+    component: DoctorLayout,
+    beforeEnter: (to) => {
+      return DoctorService.getDoctor(to.params.id)
+        .then((response) => {
+          GStore.doctor = response.data
+        })
+        .catch((error) => {
+          if (error.response && error.response.status == 404) {
+            return {
+              name: '404Resource'
+            }
+          } else {
+            return { name: 'NetWorkError' }
+          }
+        })
+      },
+    children: [
+      {
+        path: 'changeRoleToPeople/:id',
+        name: 'ChangeRoleToPeople',
+        component: ChangeRoleToPeople,
+        props: true,
+        beforeEnter: () => {
+          return DoctorService.getAllDoctor()
+            .then((response) => {
+              GStore.doctor = response.data
+            })
+            .catch(() => {
+              GStore.doctor = null
+              console.log('cannot load doctor')
+            })
+        }
+      },
+    ]
+  },
+  {
     path: '/userList',
     name: 'EventUserList',
     component: EventUserView,
-    props: (route) => ({ page: parseInt(route.query.page) || 1 })
+    props: (route) => ({ page: parseInt(route.query.page) || 1 }),
   },
   {
     path: '/doctorList',

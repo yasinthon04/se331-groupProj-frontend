@@ -1,8 +1,8 @@
 <template>
-  <!-- <router-link
+  <router-link
     class="event-link"
-    :to="{ name: 'UserDetailView', params: { id: user.id } }"
-  > -->
+    :to="{ name: 'UserLayout', params: { id: user.id } }"
+  >
   <!-- <span v-if="isAdmin"> -->
   <li class="card" aria-labelledby="event card">
     <div class="card__filter">
@@ -12,12 +12,15 @@
       <div class="name">{{ user.firstname }}</div>
     </div>
     <div class="actions">
-      <button class="btn hvr-underline-from-center">Set to user</button>
-      <button class="btn hvr-underline-from-center">Set to people</button>
+      
+      <!-- <button class="btn hvr-underline-from-center" >Set to doctor</button>
+    
+      <button class="btn hvr-underline-from-center">Set to people</button> -->
+    
     </div>
   </li>
   <!-- </span> -->
-  <!-- </router-link> -->
+  </router-link>
 </template>
 <script>
 import AuthService from '@/services/AuthService.js'

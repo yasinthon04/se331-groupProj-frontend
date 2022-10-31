@@ -7,8 +7,11 @@ export default {
   getDoctor(id) {
     return apiClient.get('/doctor/' + id)
   },
-  saveDoctor(doctors) {
-    return apiClient.post('/doctor', doctors)
+  getAllDoctor() {
+    return apiClient.get('/doctors')
+  },
+  getDoctorPeople(id) {
+    return apiClient.get('/doctor/' + id + '/people')
   },
   getDoctorByKeyword(keyword, perPage, page) {
     return apiClient.get(

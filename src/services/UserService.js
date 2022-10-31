@@ -7,8 +7,8 @@ export default {
   getUser(id) {
     return apiClient.get('/user/' + id)
   },
-  saveUser(User) {
-    return apiClient.post('/user', User)
+  setDoctorToUser(doctor) {
+    return apiClient.post('/setDoctorToUser', doctor)
   },
   getUserByKeyword(keyword, perPage, page) {
     return apiClient.get(
