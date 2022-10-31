@@ -6,9 +6,10 @@ Project Name
 3.632115034 Yasinthon Roekkamyee
 
 Link for frontend
-3.224.152.39:8001
+
+http://3.224.152.39:8001
 
 Link for backend
-3.224.152.39:8999
+http://3.224.152.39:8999
 
 *** We do the deployment VM on the AWS ***
