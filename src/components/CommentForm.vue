@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       patient_id: '',
-      comment: '',
+      comment: ''
     }
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
       }, 3000)
       let doctorComment = {
         patient_id: GStore.people.id,
-        comment: this.comment,
+        comment: this.comment
       }
       this.$emit('comment-submited', doctorComment)
       this.patient_id = ''
