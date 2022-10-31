@@ -15,6 +15,10 @@ export default {
       'doctor?_limit=' + perPage + '&_page=' + page + '&title=' + keyword
     )
   },
+  getDoctorOwnPeople(id) {
+    return apiClient.get('/doctor/' + id + '/people')
+  },
+
   uploadFile(file) {
     let formData = new FormData()
     formData.append('file', file)

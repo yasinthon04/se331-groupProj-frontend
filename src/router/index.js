@@ -16,7 +16,7 @@ import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
 import EventUserView from '@/views/EventUserView.vue'
-import DoctorListView from '@/views/DoctorListView.vue'
+import DoctorListView from '@/views/doctor/DoctorListView.vue'
 import AddComVac from '@/views/doctor/AddComVac.vue'
 import CommentList from '@/components/CommentList.vue'
 
