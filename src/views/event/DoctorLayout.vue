@@ -31,12 +31,7 @@
         </div>
 
         <div class="stats">
-            <!-- <router-link
-              class="event-link"
-              :to="{ name: 'ChangeRoleToPeople', params: { id: GStore.doctor.id } }"
-            > -->
               <button class="btn hvr-underline-from-center" @click="change">Set to people</button>
-            <!-- </router-link> -->
           </div>
       </div>
     </div>
@@ -59,19 +54,16 @@ export default {
     isDoctor() {
       return AuthService.hasRoles('ROLE_DOCTOR')
     },
-    isdoctor() {
-      return AuthService.hasRoles('ROLE_doctor')
-    }
   },
   data() {
     return {
       doctorData: {
-        id: GStore.user.id,
-        name: GStore.user.firstname,
-        surname: GStore.user.lastname,
-        image: GStore.user.image,
-        age: GStore.user.age,
-        hometown: GStore.user.hometown
+        id: GStore.doctor.id,
+        name: GStore.doctor.firstname,
+        surname: GStore.doctor.lastname,
+        image: GStore.doctor.image,
+        age: GStore.doctor.age,
+        hometown: GStore.doctor.hometown
       }
     }
   },

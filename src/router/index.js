@@ -7,7 +7,6 @@ import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
-import AddEvent from '@/views/EventForm.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
 import PeopleService from '@/services/PeopleService'
@@ -17,7 +16,7 @@ import Login from '@/views/LoginFormView.vue'
 import Register from '@/views/RegisterFormView.vue'
 import WelcomePage from '@/views/WelcomePage.vue'
 import EventUserView from '@/views/EventUserView.vue'
-import DoctorListView from '@/views/doctor/DoctorListView.vue'
+import DoctorListView from '@/views/DoctorListView.vue'
 import AddComVac from '@/views/doctor/AddComVac.vue'
 import CommentList from '@/components/CommentList.vue'
 import ChangeRoleToDoctor from '@/components/EventUser.vue'
@@ -206,21 +205,6 @@ const routes = [
     ]
   },
   {
-    path: '/add-event',
-    name: 'AddEvent',
-    component: AddEvent,
-    beforeEnter: () => {
-      return DoctorService.getDoctor()
-        .then((response) => {
-          GStore.doctor = response.data
-        })
-        .catch(() => {
-          GStore.doctor = null
-          console.log('cannot load doctor')
-        })
-    }
-  },
-  {
     path: '/404/:resource',
     name: '404Resource',
     component: NotFoundView,
@@ -230,16 +214,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
-    // beforeEnter: () => {
-    //   if (GStore.currentUser.authorities == 'ROLE_ADMIN') {
-    //     return {
-    //       name: 'EventList'
-    //     }
-    //   }
-    //   return {
-    //     name: '/'
-    //   }
-    // }
   },
   {
     path: '/register',
