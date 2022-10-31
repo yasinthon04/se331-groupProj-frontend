@@ -4,7 +4,6 @@
       <CommentForm @comment-submited="addComment" />
     </div>
     <div v-if="isAdmin" class="col">
-      {{ GStore.people }}
       <VaccineForm @comment-submited="addVaccine" />
     </div>
   </div>

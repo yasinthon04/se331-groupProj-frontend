@@ -18,6 +18,9 @@ export default {
   getDoctorOwnPeople(id) {
     return apiClient.get('/doctor/' + id + '/people')
   },
+  getAllDoctor() {
+    return apiClient.get('/doctors')
+  },
 
   uploadFile(file) {
     let formData = new FormData()

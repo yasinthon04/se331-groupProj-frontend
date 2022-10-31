@@ -7,7 +7,7 @@ import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
-import AddEvent from '@/views/EventForm.vue'
+// import AddEvent from '@/views/EventForm.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
 import PeopleService from '@/services/PeopleService'
@@ -19,6 +19,7 @@ import EventUserView from '@/views/EventUserView.vue'
 import DoctorListView from '@/views/doctor/DoctorListView.vue'
 import AddComVac from '@/views/doctor/AddComVac.vue'
 import CommentList from '@/components/CommentList.vue'
+import DocOwnPeople from '@/views/doctor/DoctorOwnPatient.vue'
 
 const routes = [
   {
@@ -41,29 +42,50 @@ const routes = [
     },
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
   {
     path: '/home',
     name: 'EventList',
     component: EventListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
   {
     path: '/about',
     name: 'about',
     component: AboutView
   },
+
   {
     path: '/userList',
     name: 'EventUserList',
     component: EventUserView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
   {
     path: '/doctorList',
     name: 'DoctorListView',
     component: DoctorListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
+  {
+    path: '/ownPeople',
+    name: 'OwnPeople',
+    component: DocOwnPeople,
+    beforeEnter: () => {
+      return DoctorService.getAllDoctor().then((response) => {
+        // console.log(GStore.doctor)
+        GStore.doctor = response.data
+      })
+      .catch(() => {
+        GStore.doctor = null
+        console.log("cannot load data in doctor")
+      })
+    }
+  },
+
   {
     path: '/addComVac',
     name: 'addCommentOrVaccine',
@@ -74,6 +96,7 @@ const routes = [
     name: 'commentList',
     component: CommentList
   },
+
   {
     path: '/people/:id',
     name: 'EventLayoutView',
@@ -117,21 +140,21 @@ const routes = [
       }
     ]
   },
-  {
-    path: '/add-event',
-    name: 'AddEvent',
-    component: AddEvent,
-    beforeEnter: () => {
-      return DoctorService.getDoctor()
-        .then((response) => {
-          GStore.doctor = response.data
-        })
-        .catch(() => {
-          GStore.doctor = null
-          console.log('cannot load doctor')
-        })
-    }
-  },
+  // {
+  //   path: '/add-event',
+  //   name: 'AddEvent',
+  //   component: AddEvent,
+  //   beforeEnter: () => {
+  //     return DoctorService.getDoctor()
+  //       .then((response) => {
+  //         GStore.doctor = response.data
+  //       })
+  //       .catch(() => {
+  //         GStore.doctor = null
+  //         console.log('cannot load doctor')
+  //       })
+  //   }
+  // },
   {
     path: '/404/:resource',
     name: '404Resource',

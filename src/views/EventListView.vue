@@ -2,11 +2,13 @@
   <div class="name">People' vaccinated</div>
   <div class="events">
     <div class="row">
-      <EventCard
+      <!-- <span v-if="isAdmin"> -->
+      <EventCard 
         v-for="people in people"
         :key="people.id"
         :people="people"
       ></EventCard>
+      <!-- </span> -->
     </div>
 
     <span v-if="isAdmin || isDoctor">
