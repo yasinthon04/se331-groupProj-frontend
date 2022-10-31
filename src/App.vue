@@ -136,7 +136,7 @@ export default {
 }
 
 body {
-  background: rgb(220, 42, 42);
+  background: rgb(255, 255, 255);
   box-sizing: content-box;
 }
 
