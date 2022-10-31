@@ -2,7 +2,7 @@ import axios from 'axios'
 ///import router from '@/router'
 
 const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_BACKEND_URL,
+  baseURL: 'http://3.224.152.39:8999',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
