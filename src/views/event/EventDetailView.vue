@@ -32,13 +32,6 @@
         </div>
 
         <div class="stats">
-          <div class="box box1 hvr-underline-from-right">
-            <span class="value"
-              ><router-link :to="{ name: 'EventDetails' }"
-                >Details</router-link
-              ></span
-            >
-          </div>
           <div class="box box2 hvr-underline-from-right">
             <span class="value"
               ><router-link :to="{ name: 'EventVaccine' }"
@@ -62,7 +55,7 @@
                 </router-link>
               </span>
             </span>
-
+           
             <span v-if="isDoctor">
               <span class="value">
                 <router-link :to="{ name: 'addCommentOrVaccine' }">
@@ -70,7 +63,6 @@
                 </router-link>
               </span>
             </span>
-
           </div>
         </div>
 
@@ -93,9 +85,6 @@ export default {
     },
     isDoctor() {
       return AuthService.hasRoles('ROLE_DOCTOR')
-    },
-    isUser() {
-      return AuthService.hasRoles('ROLE_USER')
     }
   },
   methods: {

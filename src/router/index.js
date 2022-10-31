@@ -42,6 +42,12 @@ const routes = [
           params: { id: GStore.currentUser.id }
         }
       }
+      if (GStore.currentUser.authorities == 'ROLE_DOCTOR'){
+        return{
+          name: 'OwnPeople',
+          params: { id: GStore.currentUser.id }
+        }
+      }
       return {
         name: 'EventList'
       }
