@@ -23,6 +23,8 @@ import ChangeRoleToDoctor from '@/components/EventUser.vue'
 import ChangeRoleToPeople from '@/components/EventUser.vue'
 import UserLayout from '@/views/event/UserLayout.vue'
 import DoctorLayout from '@/views/event/DoctorLayout.vue'
+import DocOwnPeople from '@/views/doctor/DoctorOwnPatient.vue'
+
 
 const routes = [
   {
@@ -45,17 +47,20 @@ const routes = [
     },
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
   {
     path: '/home',
     name: 'EventList',
     component: EventListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
   {
     path: '/about',
     name: 'about',
     component: AboutView
   },
+
   {
     path: '/userLayout',
     name: 'UserLayout',
@@ -145,12 +150,29 @@ const routes = [
     component: EventUserView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 }),
   },
+
   {
     path: '/doctorList',
     name: 'DoctorListView',
     component: DoctorListView,
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
+
+  {
+    path: '/ownPeople',
+    name: 'OwnPeople',
+    component: DocOwnPeople,
+    beforeEnter: () => {
+      return DoctorService.getAllDoctor().then((response) => {
+        GStore.doctor = response.data
+      })
+      .catch(() => {
+        GStore.doctor = null
+        console.log("cannot load data in doctor")
+      })
+    }
+  },
+
   {
     path: '/addComVac',
     name: 'addCommentOrVaccine',
@@ -161,12 +183,12 @@ const routes = [
     name: 'commentList',
     component: CommentList
   },
+
   {
     path: '/people/:id',
     name: 'EventLayoutView',
     component: EventLayoutView,
     beforeEnter: (to) => {
-      console.log('people')
       return PeopleService.getPeople(to.params.id)
         .then((response) => {
           GStore.people = response.data

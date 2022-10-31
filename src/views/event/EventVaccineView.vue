@@ -9,10 +9,15 @@
         </div>
 
         <div class="name">{{ people.name }} {{ people.surname }}</div>
+
+        <!-- <div v-for="people in vaccines"
+        :key="people.id"
+        :people="people"> -->
         <h4>First-dose : {{ people.vaccines[0].name }}</h4>
         <h4>Date : {{ people.vaccines[0].date }}</h4>
         <h4>Second-dose : {{ people.vaccines[1].name }}</h4>
         <h4>Date : {{ people.vaccines[1].date }}</h4>
+        <!-- </div> -->
 
         <div>
           <svg

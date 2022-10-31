@@ -12,7 +12,7 @@
           <li>
             <router-link :to="{ name: 'about' }">About</router-link><br />
           </li>
-          <!-- <span v-if="isAdmin"> -->
+          <span v-if="isAdmin">
           <li>
             <router-link :to="{ name: 'EventUserList' }">
               User list</router-link
@@ -23,7 +23,12 @@
               Doctor list</router-link
             >
           </li>
-          <!-- </span> -->
+          </span>
+          <span v-if="isDoctor">
+            <li>
+              <router-link :to="{ name: 'OwnPeople' }">Patient List</router-link>
+            </li>
+          </span>
         </ul>
         <div id="nav">
           <nav class="navbar navbar-expand">
@@ -70,6 +75,9 @@ export default {
     },
     isAdmin() {
       return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   },
   methods: {
