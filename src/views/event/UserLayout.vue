@@ -95,7 +95,7 @@ export default {
 
       AuthService.changeRoleToDoctor(this.userData)
       .then(() => {
-         this.$router.push({ path: '/home' })
+         this.$router.push({ path: '/doctorList' })
       })
       .catch(() => {
         console.log('FAIL')
