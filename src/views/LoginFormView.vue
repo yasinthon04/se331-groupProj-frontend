@@ -126,6 +126,7 @@ button {
   width: 350px;
   border-radius: 8px;
   margin: auto;
+  padding-top: 5%;
 }
 legend {
   padding-left: 10px;
