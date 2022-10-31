@@ -3,7 +3,7 @@
     <label for="name">Vaccine Name:</label>
     <input id="name" v-model="name" />
 
-    <label for="date">Type:</label>
+    <label for="date">Date:</label>
     <input id="date" v-model="date" />
 
     <input class="button" type="submit" value="Submit" />
