@@ -9,15 +9,20 @@
         </div>
 
         <div class="name">{{ people.name }} {{ people.surname }}</div>
-
-        <!-- <div v-for="people in vaccines"
-        :key="people.id"
-        :people="people"> -->
-        <h4>First-dose : {{ people.vaccines[0].name }}</h4>
-        <h4>Date : {{ people.vaccines[0].date }}</h4>
-        <h4>Second-dose : {{ people.vaccines[1].name }}</h4>
-        <h4>Date : {{ people.vaccines[1].date }}</h4>
-        <!-- </div> -->
+        <div class="row">
+          <table>
+            <tr>
+              <th>DOSE NO.</th>
+              <th>TYPE</th>
+              <th>DATE</th>
+            </tr>
+            <tr v-for="vaccine in people.vaccines" :key="vaccine.id">
+              <td>{{ vaccine.id }}</td>
+              <td>{{ vaccine.name }}</td>
+              <td>{{ vaccine.date }}</td>
+            </tr>
+          </table>
+        </div>
 
         <div>
           <svg
