@@ -32,8 +32,8 @@ const routes = [
     name: 'Welcome',
     component: WelcomePage,
     beforeEnter: () => {
-      if(GStore.currentUser == null){
-        return "/login";
+      if (GStore.currentUser == null) {
+        return '/login'
       }
       if (GStore.currentUser.authorities == 'ROLE_USER') {
         return {

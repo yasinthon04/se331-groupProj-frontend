@@ -8,7 +8,7 @@
           <br />
           Doctor's Name: {{ comment.name }}
           <br />
-          Dortor's Suggestion: "{{ comment.suggestion }}"
+          Dortor's Suggestion: "{{ comment.comment }}"
           <br />
         </li>
       </ul>

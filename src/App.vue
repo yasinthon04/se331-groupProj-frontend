@@ -83,7 +83,7 @@ export default {
   methods: {
     logout() {
       AuthService.logout()
-      this.$router.push("/")
+      this.$router.push('/')
     }
   }
 }
