@@ -47,32 +47,33 @@
             >
           </div>
 
-          <div class="box box3 hvr-underline-from-right">
-            <span v-if="isAdmin">
-              <span class="value"
-                ><router-link :to="{ name: 'addCommentOrVaccine' }"
-                  >Add vaccine</router-link
-                ></span
-              >
-            </span>
-
-            <span v-if="isDoctor">
-              <span class="value"
-                ><router-link :to="{ name: 'addCommentOrVaccine' }"
-                  >Add comment</router-link
-                ></span
-              >
-            </span>
-
-            <span v-if="isUser">
+          <div class="box box4 hvr-underline-from-right">
               <span class="value"
                 ><router-link :to="{ name: 'commentList' }"
                   >View Comment</router-link
-                ></span
-              >
+                ></span>
+          </div>
+
+          <div class="box box3 hvr-underline-from-right">
+            <span v-if="isAdmin">
+              <span class="value">
+                <router-link :to="{ name: 'addCommentOrVaccine' }">
+                  Add vaccine
+                </router-link>
+              </span>
             </span>
+
+            <span v-if="isDoctor">
+              <span class="value">
+                <router-link :to="{ name: 'addCommentOrVaccine' }">
+                  Add comment
+                </router-link>
+              </span>
+            </span>
+
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -125,7 +126,7 @@ body {
   position: absolute;
   top: 35%;
   left: 42%;
-  width: 700px;
+  width: 700px auto;
   height: 700px;
   margin-top: -200px;
   margin-left: -200px;
@@ -327,6 +328,9 @@ svg {
 
 .box3 {
   animation: bg 1.1s ease-in-out;
+}
+.box4 {
+  animation: bg 1.4s ease-in-out;
 }
 
 @keyframes bg {

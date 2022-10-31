@@ -11,8 +11,9 @@
 
 <script>
 import GStore from '@/store'
-
+import CommentService from '@/services/CommentService.js'
 export default {
+
   inject: ['GStore'],
   data() {
     return {
@@ -34,6 +35,7 @@ export default {
         patient_id: GStore.people.id,
         comment: this.comment
       }
+      CommentService.addCommentToUser(GStore.people.id, this.comment)
       this.$emit('comment-submited', doctorComment)
       this.patient_id = ''
       this.comment = ''

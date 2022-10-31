@@ -9,7 +9,7 @@ import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
-import PeopleService from '@/services/PeopleService'
+import PeopleService from '@/services/PeopleService.js'
 import DoctorService from '@/services/DoctorService.js'
 import UserService from '@/services/UserService'
 import Login from '@/views/LoginFormView.vue'
@@ -24,6 +24,7 @@ import ChangeRoleToPeople from '@/components/EventUser.vue'
 import UserLayout from '@/views/event/UserLayout.vue'
 import DoctorLayout from '@/views/event/DoctorLayout.vue'
 import DocOwnPeople from '@/views/doctor/DoctorOwnPatient.vue'
+import CommentService from '@/services/CommentService'
 
 
 const routes = [
@@ -181,7 +182,24 @@ const routes = [
   {
     path: '/commentList',
     name: 'commentList',
-    component: CommentList
+    component: CommentList,
+    beforeEnter: () => {
+      console.log('comment')
+      return CommentService.getCommentList()
+        .then((response) => {
+          GStore.comment = response.data
+        })
+        .catch((error) => {
+          if (error.response && error.response.start == 404) {
+            return {
+              name: '404Resource',
+              parames: { resource: 'people' }
+            }
+          } else {
+            return { name: 'NetworkError' }
+          }
+        })
+    },
   },
 
   {

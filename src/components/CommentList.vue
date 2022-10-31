@@ -2,16 +2,13 @@
   <div class="review-container">
     <div id="doctorSuggest-card">
       <h3>Doctor Comment:</h3>
-      <ul>
-        <li v-for="(comment, index) in comments" :key="index">
-          Date: {{ comment.date }}
-          <br />
-          Doctor's Name: {{ comment.name }}
-          <br />
-          Dortor's Suggestion: "{{ comment.comment }}"
-          <br />
-        </li>
-      </ul>
+      {{ GStore.people.comments}}
+      <span 
+        v-for="comment in GStore.people.commentList"
+        :key="comment.id"
+        :comment="comment"
+        > Comment: {{ comment.comment }}
+      </span>
     </div>
   </div>
 </template>
